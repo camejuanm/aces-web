@@ -1,0 +1,28 @@
+@import 'modules/modules';
+@import 'partials/normalize';
+
+html {
+  font: 400 14px $base_font_family;
+
+  @media #{$md} {
+    font-size: $base_font_size;
+  }
+}
+
+.w-full {
+  width: 100%;
+}
+
+.site-main {
+  position: relative;
+  z-index: 0;
+  padding-top: 58px;
+  @media #{$md} {
+    padding-top: 78px;
+  }
+}
+
+.site-footer {
+  position: relative;
+  z-index: 0;
+}
