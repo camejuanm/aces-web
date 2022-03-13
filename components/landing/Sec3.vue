@@ -2,10 +2,10 @@
   <section class="team-section">
     <div class="grid container">
       <div class="grid_column">
-        <h3 class="title">
+        <h1 class="title">
           ACES <br />
           Generation XII
-        </h3>
+        </h1>
         <p>
           <span>Visi : </span> Menjadikan ACES sebagai himpunan yang aktif
           berkontribusi dan responsif bagi anggota, almamater, dan masyarakat.

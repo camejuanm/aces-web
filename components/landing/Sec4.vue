@@ -3,7 +3,8 @@
     <div class="container">
       <div class="grid">
         <div class="grid_column" col="s12,l6" style="padding-right: 3em">
-          <h3>CURRENT ACTIVITIES</h3>
+          <h1>OUR PROGRAM</h1>
+          <span>ACES </span><span class="font--bold">TUTOR</span>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Perspiciatis ducimus aliquid earum? Maiores libero laboriosam
@@ -19,7 +20,6 @@
           </p>
         </div>
         <div class="grid_column" col="s12,l6" style="padding-top: 2em">
-          <span>ACES </span><br /><span class="font--bold">TUTOR</span>
           <img
             src="/img/current-activities.png"
             alt="documentation"

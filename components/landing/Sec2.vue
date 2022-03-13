@@ -2,7 +2,6 @@
   <section class="community-section">
     <div class="grid container">
       <div class="grid_column community">
-        <h3 class="title">Our Communities</h3>
         <div class="card-wrapper">
           <div class="card-item">
             <img src="/img/icon-aceslabs.png" class="card-icon" alt="" />

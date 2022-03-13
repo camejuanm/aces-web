@@ -14,7 +14,7 @@
             adipisicing elit. Eum provident maxime repellendus assumenda,
             accusantium blanditiis odio aspernatur quas delectus voluptates? sit
             amet consectetur adipisicing elit ...
-            <nuxt-link :to="`/`">Read more.</nuxt-link>
+            <nuxt-link :to="`/blog/`">Read more.</nuxt-link>
           </p>
         </div>
       </div>
@@ -57,12 +57,8 @@ export default {
   h1 {
     font-weight: 300 !important;
     letter-spacing: 1px;
-    font-size: 2em;
-    margin-bottom: 0.5em;
 
-    @media #{$md} {
-      font-size: 2.5em;
-    }
+    margin-bottom: 0.5em;
   }
 }
 
