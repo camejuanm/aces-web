@@ -28,7 +28,8 @@ body {
   display: table-row;
   height: 1px;
 
-  &.\--push {
+  &.\--pushed {
+    // height: auto;
     height: 100%;
   }
 }

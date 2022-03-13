@@ -62,7 +62,7 @@ export default {
   box-shadow: 0px 3px 4px rgba(#000, 0.15);
 
   @media #{$md} {
-    height: 80px;
+    height: 70px;
   }
 }
 

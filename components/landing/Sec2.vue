@@ -3,12 +3,6 @@
     <div class="grid container">
       <div class="grid_column community">
         <h3 class="title">Our Communities</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum porro
-          tempore voluptas aut provident in officia quia culpa eligendi!
-          Nesciunt aliquam voluptatibus quae natus dolore. Dicta dolores
-          corporis assumenda aperiam.
-        </p>
         <div class="card-wrapper">
           <div class="card-item">
             <img src="/img/icon-aceslabs.png" class="card-icon" alt="" />

@@ -10,6 +10,14 @@
           <span>Visi : </span> Menjadikan ACES sebagai himpunan yang aktif
           berkontribusi dan responsif bagi anggota, almamater, dan masyarakat.
         </p>
+        <p>
+          <span>Misi : </span>
+          <ul>
+            <li>- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, fugiat vero! Neque recusandae iure aliquam tempore amet, sapiente maiores voluptatem, sed reprehenderit culpa accusantium dolorem eum corrupti! Accusantium, labore inventore!</li>
+            <li>- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum explicabo, quo laborum mollitia a dolore alias aliquam ad modi eius?</li>
+            <li>- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo assumenda quae dolorem voluptates iusto?</li>
+          </ul>
+        </p>
         <VueSlickCarousel class="slider" v-bind="sliderOptions">
           <div v-for="people in pengurus" :key="people.name">
             <div class="slider-item">
@@ -164,5 +172,10 @@ p {
     flex-direction: column;
     gap: 10px;
   }
+}
+
+ul {
+  padding: 0;
+  list-style: none;
 }
 </style>
