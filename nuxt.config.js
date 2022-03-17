@@ -31,7 +31,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    'nuxt-animejs'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

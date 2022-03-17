@@ -26,7 +26,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .site-footer {
-  background: url('/img/background-footer.png');
+  background: #151515;
   background-size: cover;
   background-position: center center;
   padding: 5em 0;

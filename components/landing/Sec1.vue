@@ -1,22 +1,79 @@
 <template>
   <section class="hero-section">
-    <div class="grid container">
+    <div class="background-image">
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 1438 157"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1.5 73.5C61.3333 17.3333 283.8 -59.3 695 83.5C1106.2 226.3 1361 122.667 1437 53"
+          stroke="url(#paint0_linear_221_3)"
+          stroke-width=".5"
+          class="path"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_221_3"
+            x1="1305"
+            y1="21.0003"
+            x2="-76"
+            y2="46.5003"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#48AAD5" />
+            <stop offset="0.342712" stop-color="#B8EAFF" />
+            <stop offset="1" stop-color="#61B9DE" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 1438 157"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M-2.5 1C193 139 417.5 206.5 719.5 92C1134.5 -65.3426 1244 60 1441 164.5"
+          stroke="url(#paint0_linear_221_1)"
+          stroke-width="0.5"
+          class="path1"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_221_1"
+            x1="1305"
+            y1="21.0003"
+            x2="-76"
+            y2="46.5003"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#A1E1FD" />
+            <stop offset="0.30268" stop-color="#247EA5" />
+            <stop offset="0.701854" stop-color="#B8EAFF" />
+            <stop offset="1" stop-color="#9ADFFC" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="grid container hero-container">
       <div class="grid_column title">
         <h1>Association of Computer Engineering Students</h1>
       </div>
       <div class="grid_column moto">
         <p>We not just the part of system, we create it!</p>
       </div>
-      <div class="grid_column">
-        <div class="news">
-          <p>
-            <span>Current news : </span> ipsum dolor sit amet consectetur
-            adipisicing elit. Eum provident maxime repellendus assumenda,
-            accusantium blanditiis odio aspernatur quas delectus voluptates? sit
-            amet consectetur adipisicing elit ...
-            <nuxt-link :to="`/blog/`">Read more.</nuxt-link>
-          </p>
-        </div>
+    </div>
+    <div class="card-container">
+      <div class="card-wrapper">
+        <span class="font--bold">News :</span>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit
+        ea deleniti ullam officiis autem explicabo, similique doloribus
+        voluptatem recusandae quidem?
+        <span class="font--bold">Read more ...</span>
       </div>
     </div>
   </section>
@@ -24,34 +81,87 @@
 
 <script>
 export default {
-  name: 'HeroSection'
+  name: 'HeroSection',
+  mounted() {
+    this.animatePath0()
+    this.animatePath1()
+  },
+  methods: {
+    animatePath0() {
+      this.$anime({
+        targets: '.path',
+        d: [
+          {
+            value:
+              'M-2.5 1C193 139 417.5 206.5 719.5 92C1134.5 -65.3426 1244 60 1441 164.5'
+          },
+          {
+            value:
+              'M1.5 73.5C61.3333 17.3333 283.8 -59.3 695 83.5C1106.2 226.3 1361 122.667 1437 53'
+          }
+        ],
+        easing: 'easeInOutQuad',
+        duration: 10000,
+        loop: true
+      })
+    },
+    animatePath1() {
+      this.$anime({
+        targets: '.path1',
+        d: [
+          {
+            value:
+              'M1.5 73.5C61.3333 17.3333 283.8 -59.3 695 83.5C1106.2 226.3 1361 122.667 1437 53'
+          },
+          {
+            value:
+              'M-2.5 1C193 139 417.5 206.5 719.5 92C1134.5 -65.3426 1244 60 1441 164.5'
+          }
+        ],
+        easing: 'easeInOutQuad',
+        duration: 10000,
+        loop: true
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 .hero {
   &-section {
-    background-image: linear-gradient(
-        to right,
-        rgba($color: #222, $alpha: 1),
-        rgba($color: #222, $alpha: 0.5)
-      ),
-      url('/img/aces-bg.JPG');
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
+    height: 93vh;
     position: relative;
+    display: flex;
+    justify-content: center;
+
+    background: #151515;
     color: #fff;
+
     font-family: Poppins-Light, sans-serif;
+
+    @media #{$md} {
+      height: 70vh;
+    }
+  }
+  &-container {
+    position: absolute;
+    top: 0;
+    z-index: 2;
   }
 }
 
 .title {
   font-family: Italiana, sans-serif;
   position: relative;
-  padding-top: 8%;
+  padding-top: 45%;
+  text-align: center;
 
   @media #{$md} {
-    padding-top: 6%;
+    padding-top: 23%;
+  }
+  @media #{$large} {
+    padding-top: 15%;
+    text-align: left;
   }
 
   h1 {
@@ -65,35 +175,55 @@ export default {
 .moto {
   color: #fff;
   font-size: 1.25em;
+  text-align: center;
 
   @media #{$md} {
     font-size: 1.25em;
   }
+  @media #{$large} {
+    text-align: left;
+  }
 }
 
-.news {
-  display: flex;
-  position: relative;
-  margin-top: 3em;
-  background: linear-gradient(
-    to left,
-    rgba($color: #222, $alpha: 0),
-    rgba($color: #adadad, $alpha: 0.3),
-    rgba($color: #222, $alpha: 0)
-  );
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 30vh;
+  bottom: 0;
 
-  @media #{$md} {
-    margin-top: 5em;
+  svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
+}
 
-  p {
-    font-size: 0.9em;
-    width: 95%;
-    padding: 1em 0 1em 0;
+.card {
+  &-container {
+    position: absolute;
+    top: 0;
+    gap: 1px;
 
-    span {
-      font-weight: 400;
-      color: $primary;
+    width: 100%;
+    padding: 1em 0;
+
+    background: #fff;
+    color: #151515;
+
+    display: flex;
+    justify-content: center;
+  }
+  &-wrapper {
+    width: 93%;
+    max-width: 1280px;
+
+    padding: 1.2em 0;
+
+    border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+
+    img {
+      max-width: 100%;
     }
   }
 }

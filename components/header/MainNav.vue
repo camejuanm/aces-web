@@ -1,10 +1,12 @@
 <template>
-  <nav class="main-nav" :class="{ navActive: isActive }">
-    <ul>
-      <li class="toggler" @click="toggler">X</li>
-      <li class="nav-link"><nuxt-link to="/about">NEWS</nuxt-link></li>
-      <li class="nav-link"><nuxt-link to="/about">LABS</nuxt-link></li>
-      <li class="nav-link"><nuxt-link to="/about">ABOUT</nuxt-link></li>
+  <nav class="nav-wrapper" :class="{ navActive: isActive }">
+    <div class="toggler">
+      <span @click="toggler">X</span>
+    </div>
+    <ul class="nav-item">
+      <li class="nav-link"><nuxt-link to="/about">News</nuxt-link></li>
+      <li class="nav-link"><nuxt-link to="/about">Labs</nuxt-link></li>
+      <li class="nav-link"><nuxt-link to="/about">About</nuxt-link></li>
     </ul>
   </nav>
 </template>
@@ -27,60 +29,68 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 60%;
-  background-color: rgba($color: #222, $alpha: 0.7);
-  backdrop-filter: blur(5px);
-  -moz-backdrop-filter: blur(5px);
-  height: 100vh;
-  transition: 0.5s ease;
-  transform: translateX(100%);
+.nav {
+  &-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
 
-  @media #{$large} {
-    position: relative;
     width: 100%;
-    transform: translateX(0);
-    background-color: transparent;
-    backdrop-filter: none;
-    height: auto;
-    padding: 0;
+    height: 100vh;
+
+    background: #fff;
+
+    transition: 0.5s ease;
+    transform: translateX(100%);
+
+    @media #{$large} {
+      width: 100%;
+      height: auto;
+
+      position: relative;
+      transform: translateX(0);
+
+      background-color: transparent;
+      backdrop-filter: none;
+    }
   }
 
-  > ul {
-    padding: 10px 0 0 0;
-    margin: 0;
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+
+    padding: 0 2em;
+
     @media #{$large} {
-      display: flex;
+      flex-direction: row;
       padding: 0;
-      gap: 2em;
-      width: 100%;
-      justify-content: flex-end;
+    }
+  }
+
+  &-link {
+    font-size: 1.6em;
+
+    a {
+      color: #161616;
     }
 
-    > li {
-      list-style: none;
-      padding: 1em 2em;
-      @media #{$large} {
-        padding: 0;
-      }
-
-      a {
-        color: #fff;
-      }
+    @media #{$large} {
+      font-size: 1em;
     }
+  }
+}
+
+.toggler {
+  padding: 0 2em;
+  margin: 2em 0 2em 0;
+
+  @media #{$large} {
+    display: none;
   }
 }
 
 .navActive {
   transform: translateX(0);
-}
-
-.toggler {
-  @media #{$large} {
-    display: none;
-  }
 }
 </style>
