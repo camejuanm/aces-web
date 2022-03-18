@@ -6,18 +6,30 @@
           ACES <br />
           Generation XII
         </h1>
-        <p>
+        <p id="visi">
           <span>Visi : </span> Menjadikan ACES sebagai himpunan yang aktif
           berkontribusi dan responsif bagi anggota, almamater, dan masyarakat.
         </p>
-        <p>
+        <div id="misi">
           <span>Misi : </span>
           <ul>
-            <li>- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, fugiat vero! Neque recusandae iure aliquam tempore amet, sapiente maiores voluptatem, sed reprehenderit culpa accusantium dolorem eum corrupti! Accusantium, labore inventore!</li>
-            <li>- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum explicabo, quo laborum mollitia a dolore alias aliquam ad modi eius?</li>
-            <li>- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo assumenda quae dolorem voluptates iusto?</li>
+            <li>
+              - Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Assumenda, fugiat vero! Neque recusandae iure aliquam tempore
+              amet, sapiente maiores voluptatem, sed reprehenderit culpa
+              accusantium dolorem eum corrupti! Accusantium, labore inventore!
+            </li>
+            <li>
+              - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum
+              explicabo, quo laborum mollitia a dolore alias aliquam ad modi
+              eius?
+            </li>
+            <li>
+              - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+              assumenda quae dolorem voluptates iusto?
+            </li>
           </ul>
-        </p>
+        </div>
         <VueSlickCarousel class="slider" v-bind="sliderOptions">
           <div v-for="people in pengurus" :key="people.name">
             <div class="slider-item">
@@ -111,7 +123,40 @@ export default {
           name: 'Julia Theresia Fonataba',
           jabatan: 'Public Relation'
         }
-      ]
+      ],
+      intersectionOptions: {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: [0, 0.25]
+      }
+    }
+  },
+  methods: {
+    animateVisi({ direction }) {
+      if (direction === this.$waypointMap.DIRECTION_TOP) {
+        this.$anime({
+          targets: '#visi',
+          translateX: [-80, 0],
+          opacity: [0, 1],
+          delay: 300,
+          duration: 600,
+          easing: 'easeInQuad',
+          direction: 'normal'
+        })
+      }
+    },
+    animateMisi({ direction }) {
+      if (direction === this.$waypointMap.DIRECTION_TOP) {
+        this.$anime({
+          targets: '#misi',
+          translateX: [-80, 0],
+          opacity: [0, 1],
+          delay: 600,
+          duration: 600,
+          easing: 'easeInQuad',
+          direction: 'normal'
+        })
+      }
     }
   }
 }
@@ -136,7 +181,7 @@ p {
 .title {
   margin: 0;
   text-align: left;
-  
+
   padding: 8px 0;
   border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
   border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);

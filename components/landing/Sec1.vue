@@ -66,13 +66,23 @@
       <div class="grid_column moto">
         <p>We not just the part of system, we create it!</p>
       </div>
+      <div class="agenda">
+        <div class="date">
+          <span class="date-day">21</span>
+          <span class="date-month">Maret</span>
+        </div>
+        <p class="agenda-text">
+          <span class="agenda-title">Save The Date!</span>
+          <span class="agenda-description">
+            ACES DAY : Sharing Magang MBKM & Program Bangkit
+          </span>
+        </p>
+      </div>
     </div>
     <div class="card-container">
       <div class="card-wrapper">
         <span class="font--bold">News :</span>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit
-        ea deleniti ullam officiis autem explicabo, similique doloribus
-        voluptatem recusandae quidem?
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, soluta?
         <span class="font--bold">Read more ...</span>
       </div>
     </div>
@@ -157,10 +167,10 @@ export default {
   text-align: center;
 
   @media #{$md} {
-    padding-top: 23%;
+    padding-top: 15%;
   }
   @media #{$large} {
-    padding-top: 15%;
+    padding-top: 13%;
     text-align: left;
   }
 
@@ -168,7 +178,7 @@ export default {
     font-weight: 300 !important;
     letter-spacing: 1px;
 
-    margin-bottom: 0.5em;
+    margin-bottom: 0;
   }
 }
 
@@ -225,6 +235,66 @@ export default {
     img {
       max-width: 100%;
     }
+  }
+}
+
+.agenda {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin-top: 1em;
+  gap: 12px;
+
+  @media #{$large} {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: rgb(241, 154, 82);
+    color: #151515;
+    font-family: Poppins-medium, sans-serif;
+
+    padding: 6px 1em;
+
+    &-day {
+      font-size: 2.2em;
+    }
+  }
+
+  &-text {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #fff;
+
+    @media #{$large} {
+      align-items: flex-start;
+    }
+  }
+
+  &-title {
+    font-size: 80%;
+  }
+
+  &-description {
+    background: #fff;
+    color: #151515;
+
+    padding: 6px 1em;
+    margin: 6px 0 0 0;
+
+    text-align: center;
   }
 }
 </style>
