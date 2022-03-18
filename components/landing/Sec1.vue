@@ -259,7 +259,7 @@ export default {
     justify-content: center;
     align-items: center;
 
-    background: rgb(241, 154, 82);
+    background: #54bbff;
     color: #151515;
     font-family: Poppins-medium, sans-serif;
 

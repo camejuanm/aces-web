@@ -4,8 +4,8 @@
       <span @click="toggler">X</span>
     </div>
     <ul class="nav-item">
-      <li class="nav-link"><nuxt-link to="/about">News</nuxt-link></li>
-      <li class="nav-link"><nuxt-link to="/about">Labs</nuxt-link></li>
+      <li class="nav-link"><nuxt-link to="/blog">Blog</nuxt-link></li>
+      <li class="nav-link"><nuxt-link to="/labs">Labs</nuxt-link></li>
       <li class="nav-link"><nuxt-link to="/about">About</nuxt-link></li>
     </ul>
   </nav>
