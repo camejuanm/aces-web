@@ -2,13 +2,18 @@
   <main class="site-main container">
     <section class="blog-header grid">
       <div class="grid_column" col="l6">
-        <p class="h1">
+        <p class="h1 title">
           Welcome <br />
           to Our Journey
         </p>
-        <p />
+        <p class="subtitle">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci,
+          minima.
+        </p>
       </div>
-      <div class="grid_column blog-header-image" col="l6">hi</div>
+      <div class="grid_column blog-header-image" col="l6">
+        <img src="/img/blog-header.jpg" alt="" />
+      </div>
     </section>
 
     <nav class="blog-filter">
@@ -22,7 +27,9 @@
           <img src="/img/DSCF2719.JPG" alt="" />
         </div>
         <div class="card-text">
-          <span class="h4 title">Lorem ipsum dolor sit.</span>
+          <nuxt-link :to="`/blog/1`"
+            ><span class="h4 title">Lorem ipsum dolor sit.</span></nuxt-link
+          >
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt quos,
             neque odit esse architecto voluptatem vero molestiae earum voluptate
@@ -49,7 +56,6 @@ export default {
 }
 .blog {
   &-header {
-    font-family: Italiana, serif;
     text-align: center;
     font-weight: 400;
 
@@ -60,12 +66,24 @@ export default {
       margin: 1em 0 0 0;
     }
 
-    img {
-      width: 100%;
+    &-image {
+      img {
+        width: 100%;
+        max-height: 320px;
+
+        object-fit: cover;
+        object-position: top center;
+      }
     }
 
-    &-image {
-      background: #49c6ff;
+    .title {
+      font-family: Italiana, serif;
+
+      margin: 0.5em 0;
+
+      @media #{$large} {
+        margin: 1em 0;
+      }
     }
   }
   &-filter {
@@ -129,6 +147,7 @@ export default {
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
     .title {
       padding: 0;
+      color: #151511;
     }
     p {
       font-size: 80%;
