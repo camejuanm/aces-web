@@ -1,5 +1,6 @@
 @import 'modules/modules';
 @import 'partials/normalize';
+@import 'partials/helpers';
 
 html {
   font: 400 14px $base_font_family;
@@ -33,4 +34,23 @@ body {
 
 ul {
   list-style: none;
+}
+
+.spinner {
+  display: block;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 5px solid rgba(#000, 0.1);
+  border-top-color: rgba(#000, 0.3);
+  animation: spinning 1s infinite both;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,3 +1,13 @@
+const AxiosInstance = {
+  baseURL: process.env.BASE_URL,
+  withCredentials: false,
+  retry: true,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+}
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -15,12 +25,17 @@ export default {
   },
 
   target: 'static',
+  ssr: false,
+  env: {
+    API_URL: process.env.API_URL
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: './plugins/helpers.js' },
     { src: './plugins/vue-slick-carousel.js' },
     { src: './plugins/v-waypoint.js', mode: 'client' }
   ],
@@ -48,7 +63,25 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    proxy: true,
+    AxiosInstance
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
+    }
+  },
+
+  proxy: {
+    '/api': {
+      target: process.env.API_URL,
+      pathRewrite: { '^/api/': '' },
+      changeOrigin: true,
+      onProxyReq(request) {
+        request.setHeader('origin', process.env.API_URL)
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -1,0 +1,53 @@
+$gaps: 0, 2, 4, 8, 12, 16, 18, 20, 24, 32, 36, 48, 64;
+
+@each $gap in $gaps {
+  .mb-#{$gap} {
+    margin-bottom: $gap * 1px !important;
+  }
+  .mr-#{$gap} {
+    margin-right: $gap * 1px !important;
+  }
+  .ml-#{$gap} {
+    margin-left: $gap * 1px !important;
+  }
+  .mt-#{$gap} {
+    margin-top: $gap * 1px !important;
+  }
+  .pb-#{$gap} {
+    padding-bottom: $gap * 1px !important;
+  }
+  .pr-#{$gap} {
+    padding-right: $gap * 1px !important;
+  }
+  .pl-#{$gap} {
+    padding-left: $gap * 1px !important;
+  }
+  .ph-#{$gap} {
+    padding-left: $gap * 1px !important;
+    padding-right: $gap * 1px !important;
+  }
+  .pt-#{$gap} {
+    padding-top: $gap * 1px !important;
+  }
+  .pv-#{$gap} {
+    padding-top: $gap * 1px !important;
+    padding-bottom: $gap * 1px !important;
+  }
+  .p-#{$gap} {
+    padding: $gap * 1px !important;
+  }
+  .col-gap-#{$gap} {
+    column-gap: $gap * 1px;
+  }
+  .row-gap-#{$gap} {
+    row-gap: $gap * 1px;
+  }
+}
+
+$cursorStyle: 'pointer', 'grab', 'grabbing', 'move', 'zoom-in', 'zoom-out';
+
+@each $style in $cursorStyle {
+  .cursor-#{$style} {
+    cursor: #{$style};
+  }
+}

@@ -1,36 +1,12 @@
 <template>
-  <main class="site-main container">
+  <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
+  <main v-else class="site-main container">
     <section class="blog-header">
-      <span class="h1 title"
-        >ACES DAY : Adaptasi Kegiatan Bonding Dimasa Pandemi</span
-      >
-      <span class="date">21 Maret 2022</span>
-      <div class="blog-header-image">
-        <img src="/img/DSCF2719.JPG" alt="" />
-        <span class="source-image">ACES-Documentation</span>
-      </div>
+      <span class="h1 title"> {{ dataArticle.title }} </span>
+      <span class="date">{{ $formatCurrentDate(dataArticle.created_at) }}</span>
     </section>
     <section class="blog-content">
-      <div class="blog-content-wrapper">
-        <span class="author">Author : PR ACES Gen. XII</span>
-        <p>
-          <span class="font--bold">Lorem ipsum </span> dolor sit amet
-          consectetur, adipisicing elit. Voluptatem nihil enim sunt harum
-          inventore repudiandae labore sed sapiente blanditiis quae vitae ex,
-          aut suscipit laborum tenetur magni quaerat ratione fuga quia cum
-          itaque obcaecati earum necessitatibus saepe. Provident modi tempora,
-          deleniti natus molestiae deserunt atque id asperiores nobis,
-          distinctio impedit.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi ex a
-          doloremque blanditiis corporis magni assumenda dolorem. Distinctio
-          soluta nesciunt cum facilis excepturi pariatur a! Eaque a veniam
-          expedita aperiam, veritatis laborum sapiente sit? Officiis
-          exercitationem dignissimos tempora? Reiciendis, ab omnis. Tempore,
-          magnam vero cupiditate porro deleniti aliquam voluptatibus ratione.
-        </p>
-      </div>
+      <div class="blog-content-wrapper" v-html="dataArticle.body"></div>
     </section>
     <section class="blog-footer">
       <div class="share-wrapper">
@@ -49,7 +25,27 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      dataArticle: null
+    }
+  },
+  async fetch() {
+    await Promise.all([
+      this.$axios.get(`${this.$apiurl()}/posts/${this.$route.params.slug}`)
+    ])
+      .then(res => {
+        this.dataArticle = res[0].data
+        // eslint-disable-next-line no-console
+        console.log(this.dataArticle)
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.response)
+      })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -110,9 +106,21 @@ export default {}
 
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
     padding: 1em 0;
+    max-width: 100%;
 
     &-wrapper {
-      max-width: 920px;
+      max-width: 100%;
+      overflow: hidden;
+
+      @media #{$large} {
+        max-width: 920px;
+      }
+
+      * {
+        img {
+          max-width: 100%;
+        }
+      }
     }
   }
 
@@ -154,5 +162,9 @@ export default {}
       }
     }
   }
+}
+
+.vh-60 {
+  height: 60vh;
 }
 </style>

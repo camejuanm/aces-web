@@ -1,5 +1,6 @@
 <template>
-  <main class="site-main container">
+  <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
+  <main v-else class="site-main container">
     <section class="blog-header grid">
       <div class="grid_column" col="l6">
         <p class="h1 title">
@@ -21,30 +22,78 @@
       <li class="blog-filter-item">Akademik</li>
     </nav>
 
-    <section class="blog-list">
-      <div v-for="i in 3" :key="i" class="card-wrapper">
+    <LoadingHandler v-if="isLoading" add-class="vh-30" />
+    <section v-else class="blog-list">
+      <div
+        v-for="(data, index) in dataArticle.data"
+        :key="index"
+        class="card-wrapper"
+      >
         <div class="thumbnail">
-          <img src="/img/DSCF2719.JPG" alt="" />
+          <img
+            :src="data.image != null ? data.image : '/img/default-image.jpg'"
+            alt=""
+          />
         </div>
         <div class="card-text">
-          <nuxt-link :to="`/blog/1`"
-            ><span class="h4 title">Lorem ipsum dolor sit.</span></nuxt-link
+          <nuxt-link :to="`/blog/${data.slug}`"
+            ><span class="h4 title">{{ data.title }}</span></nuxt-link
           >
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt quos,
-            neque odit esse architecto voluptatem vero molestiae earum voluptate
-            fugiat voluptatibus facilis temporibus perspiciatis dolore aut minus
-            qui dolores aliquam.
+            {{ data.excerpt }}
           </p>
         </div>
       </div>
     </section>
+
+    <Pagination
+      :total-pages="dataArticle.last_page"
+      :current-page="dataArticle.current_page"
+      :base-link="dataArticle.first_page_url.slice(0, -1)"
+      @first-page="toLink(dataArticle.first_page_url)"
+      @last-page="toLink(dataArticle.last_page_url)"
+      @next-page="toLink(dataArticle.next_page_url)"
+      @prev-page="toLink(dataArticle.prev_page_url)"
+      @input-page="toLink"
+    >
+    </Pagination>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'AcesBlog'
+  name: 'AcesBlog',
+  data() {
+    return {
+      dataArticle: null,
+      isLoading: false
+    }
+  },
+  async fetch() {
+    await Promise.all([this.$axios.get(`${this.$apiurl()}/posts`)])
+      .then(res => {
+        this.dataArticle = res[0].data
+        // eslint-disable-next-line no-console
+        console.log(this.dataArticle)
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.response)
+      })
+  },
+  methods: {
+    async toLink(link) {
+      this.isLoading = true
+      if (link !== null) {
+        await this.$axios.get(link).then(res => {
+          // eslint-disable-next-line no-console
+          console.log('===>', res)
+          this.dataArticle = res.data
+        })
+      }
+      this.isLoading = false
+    }
+  }
 }
 </script>
 
@@ -160,5 +209,9 @@ export default {
   font-family: Poppins-Light, sans-serif;
   display: flex;
   flex-direction: column;
+}
+
+.vh-60 {
+  height: 60vh;
 }
 </style>

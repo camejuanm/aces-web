@@ -1,5 +1,6 @@
 <template>
-  <section class="team-section">
+  <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
+  <section v-else class="team-section">
     <div class="grid container">
       <div class="grid_column">
         <h1 class="title">
@@ -31,12 +32,12 @@
           </ul>
         </div>
         <VueSlickCarousel class="slider" v-bind="sliderOptions">
-          <div v-for="people in pengurus" :key="people.name">
+          <div v-for="(people, index) in dataPengurus" :key="index">
             <div class="slider-item">
               <div class="card-wrapper">
-                <img :src="people.img" class="card-image" alt="" />
+                <img :src="'/img/image-none.png'" class="card-image" alt="" />
                 <div class="card-text">
-                  <span>{{ people.jabatan }}</span>
+                  <span>{{ people.jobdesk }}</span>
                   <span>{{ people.name }}</span>
                 </div>
               </div>
@@ -54,6 +55,8 @@ export default {
   name: 'TeamSection',
   data() {
     return {
+      dataPengurus: null,
+
       sliderOptions: {
         arrows: false,
         dots: false,
@@ -123,42 +126,26 @@ export default {
           name: 'Julia Theresia Fonataba',
           jabatan: 'Public Relation'
         }
-      ],
-      intersectionOptions: {
-        root: null,
-        rootMargin: '0px 0px 0px 0px',
-        threshold: [0, 0.25]
-      }
+      ]
     }
   },
-  methods: {
-    animateVisi({ direction }) {
-      if (direction === this.$waypointMap.DIRECTION_TOP) {
-        this.$anime({
-          targets: '#visi',
-          translateX: [-80, 0],
-          opacity: [0, 1],
-          delay: 300,
-          duration: 600,
-          easing: 'easeInQuad',
-          direction: 'normal'
-        })
-      }
-    },
-    animateMisi({ direction }) {
-      if (direction === this.$waypointMap.DIRECTION_TOP) {
-        this.$anime({
-          targets: '#misi',
-          translateX: [-80, 0],
-          opacity: [0, 1],
-          delay: 600,
-          duration: 600,
-          easing: 'easeInQuad',
-          direction: 'normal'
-        })
-      }
-    }
-  }
+  async fetch() {
+    await Promise.all([
+      this.$axios.get(
+        `${this.$apiurl()}/frontliners?generation=aces-generation-12`
+      )
+    ])
+      .then(res => {
+        this.dataPengurus = res[0].data
+        // eslint-disable-next-line no-console
+        console.log(this.dataPengurus)
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.response)
+      })
+  },
+  methods: {}
 }
 </script>
 <style lang="scss" scoped>
@@ -229,5 +216,9 @@ p {
 ul {
   padding: 0;
   list-style: none;
+}
+
+.vh-60 {
+  height: 60vh;
 }
 </style>
