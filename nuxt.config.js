@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const AxiosInstance = {
   baseURL: process.env.BASE_URL,
   withCredentials: false,
@@ -75,7 +77,7 @@ export default {
   },
 
   proxy: {
-    '/api': {
+    '/api/': {
       target: process.env.API_URL,
       pathRewrite: { '^/api/': '' },
       changeOrigin: true,
