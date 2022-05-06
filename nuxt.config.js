@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const AxiosInstance = {
   baseURL: process.env.BASE_URL,
   withCredentials: false,
@@ -59,8 +57,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/axios'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -77,7 +74,7 @@ export default {
   },
 
   proxy: {
-    '/api/': {
+    '/api': {
       target: process.env.API_URL,
       pathRewrite: { '^/api/': '' },
       changeOrigin: true,
