@@ -1,0 +1,53 @@
+.slick-dots {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+
+  > li {
+    display: inline-block;
+    margin: 0;
+  }
+
+  button {
+    text-indent: -200px;
+    overflow: hidden;
+    padding: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+}
+
+#banner-hero {
+  .slick-list {
+    z-index: 0;
+    img {
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      max-height: 300px;
+      filter: brightness(0.6);
+      @media #{$large} {
+        max-height: 400px;
+      }
+      @media #{$large} {
+        max-height: 600px;
+      }
+    }
+  }
+  .slick-dots {
+    display: flex !important;
+    justify-content: center;
+
+    position: relative;
+    margin-top: -60px;
+    padding: 0 5%;
+
+    li {
+      width: 100%;
+      max-width: 62px;
+    }
+  }
+}

@@ -1,224 +1,106 @@
 <template>
-  <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
-  <section v-else class="team-section">
-    <div class="grid container">
-      <div class="grid_column">
-        <h1 class="title">
-          ACES <br />
-          Generation XII
-        </h1>
-        <p id="visi">
-          <span>Visi : </span> Menjadikan ACES sebagai himpunan yang aktif
-          berkontribusi dan responsif bagi anggota, almamater, dan masyarakat.
-        </p>
-        <div id="misi">
-          <span>Misi : </span>
-          <ul>
-            <li>
-              - Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Assumenda, fugiat vero! Neque recusandae iure aliquam tempore
-              amet, sapiente maiores voluptatem, sed reprehenderit culpa
-              accusantium dolorem eum corrupti! Accusantium, labore inventore!
-            </li>
-            <li>
-              - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum
-              explicabo, quo laborum mollitia a dolore alias aliquam ad modi
-              eius?
-            </li>
-            <li>
-              - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
-              assumenda quae dolorem voluptates iusto?
-            </li>
-          </ul>
+  <section class="activities-section container">
+    <div class="activities-title">
+      <h1 class="f-32 m-0 p-0">WHAT WE DO</h1>
+      <span>#We not just part of system, we create it!</span>
+    </div>
+    <div class="card-container mt-24">
+      <div class="card">
+        <img src="assets/img/activities-icon-1.png" alt="icon" />
+        <div class="card-text pl-12">
+          <span class="title">Research & Experiment</span>
+          <span class="description">103 Student articles</span>
         </div>
-        <VueSlickCarousel class="slider" v-bind="sliderOptions">
-          <div v-for="(people, index) in dataPengurus" :key="index">
-            <div class="slider-item">
-              <div class="card-wrapper">
-                <img :src="'/img/image-none.png'" class="card-image" alt="" />
-                <div class="card-text">
-                  <span>{{ people.jobdesk }}</span>
-                  <span>{{ people.name }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </VueSlickCarousel>
+      </div>
+      <div class="card">
+        <img src="assets/img/activities-icon-2.png" alt="icon" />
+        <div class="card-text pl-12">
+          <span class="title">Program Activities</span>
+          <span class="description">Student Support</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/img/activities-icon-3.png" alt="icon" />
+        <div class="card-text pl-12">
+          <span class="title">ACES News</span>
+          <span class="description">Information updates</span>
+        </div>
       </div>
     </div>
   </section>
 </template>
-
 <script>
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 export default {
-  name: 'TeamSection',
-  data() {
-    return {
-      dataPengurus: null,
-
-      sliderOptions: {
-        arrows: false,
-        dots: false,
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        variableWidth: true,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 1
-            }
-          },
-          {
-            breakpoint: 448,
-            settings: {
-              slidesToShow: 1
-            }
-          }
-        ]
-      },
-      pengurus: [
-        {
-          img: '/img/image-none.png',
-          name: 'Abdul Ghofar Alhasyim',
-          jabatan: 'Ketua'
-        },
-        {
-          img: '/img/image-none.png',
-          name: 'Richard Alvin Pratama',
-          jabatan: 'Wakil Ketua'
-        },
-        {
-          img: '/img/image-none.png',
-          name: 'Raka Ihsan Danendra',
-          jabatan: 'Sekretaris & Bendahara'
-        },
-        {
-          img: '/img/image-none.png',
-          name: 'Matthew Brandon Dani',
-          jabatan: 'Koor. Research & Development'
-        },
-        {
-          img: '/img/image-none.png',
-          name: 'Gregorius Agung Nugroho',
-          jabatan: 'Koor. Akademik'
-        },
-        {
-          img: '/img/image-none.png',
-          name: 'Julius Caesar Nurdiyana Putra',
-          jabatan: 'Koor. Kesma'
-        },
-        {
-          img: '/img/image-none.png',
-          name: 'Kevin Fernando Wijaya Sumargo',
-          jabatan: 'Kesma'
-        },
-        {
-          img: '/img/image-none.png',
-          name: 'Larasati',
-          jabatan: 'Koor. Public Relation'
-        },
-
-        {
-          img: '/img/image-none.png',
-          name: 'Julia Theresia Fonataba',
-          jabatan: 'Public Relation'
-        }
-      ]
-    }
-  },
-  async fetch() {
-    await Promise.all([
-      this.$axios.get(
-        `${this.$apiurl()}/frontliners?generation=aces-generation-12`
-      )
-    ])
-      .then(res => {
-        this.dataPengurus = res[0].data
-        // eslint-disable-next-line no-console
-        console.log(this.dataPengurus)
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log(error.response)
-      })
-  },
-  methods: {}
+  name: 'ActivitiesSection'
 }
 </script>
+
 <style lang="scss" scoped>
-.team {
+.activities {
   &-section {
-    width: 100%;
-    background-color: #fff;
-    padding: 3em 0 4em 0;
+    color: #222;
+    padding-top: 24px;
+    padding-bottom: 24px;
     font-family: Poppins-Light, sans-serif;
   }
-}
+  &-title {
+    display: flex;
+    flex-direction: column;
 
-p {
-  font-size: 0.9em;
-  @media #{$md} {
-    font-size: 1em;
-  }
-}
-
-.title {
-  margin: 0;
-  text-align: left;
-
-  padding: 8px 0;
-  border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
-  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-}
-
-.slider {
-  margin-top: 2em;
-  padding: 2em 0;
-  border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
-  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-
-  &-item {
-    margin-right: 1em;
-
-    @media #{$large} {
-      margin-right: 2em;
+    @media #{$md} {
+      flex-direction: row;
+      justify-content: space-between;
     }
   }
 }
 
-.card {
-  &-wrapper {
+.card-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+
+  @media #{$large} {
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 1em;
+    row-gap: 0;
+  }
+
+  .card {
     background: #fff;
     box-shadow: 3px 3px 10px #d9d9d9;
-    max-width: 360px;
-    border-radius: 10px;
+    border-radius: 6px;
     display: flex;
-    align-items: flex-end;
-    cursor: pointer;
+
+    width: 100%;
+    min-height: 100px;
+    max-height: 120px;
+
+    @media #{$large} {
+      max-width: 400px;
+    }
+
+    img {
+      border-radius: 6px 0 0 6px;
+      width: 100%;
+      max-width: 100px;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      height: 100px;
+
+      .title {
+        font-family: Poppins, sans-serif;
+      }
+
+      .description {
+        color: #7c7c7c;
+      }
+    }
   }
-
-  &-image {
-    border-radius: 10px 0 0 10px;
-    max-width: 6.5em;
-  }
-
-  &-text {
-    padding: 1em 2em 1em 1em;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-.vh-60 {
-  height: 60vh;
 }
 </style>
