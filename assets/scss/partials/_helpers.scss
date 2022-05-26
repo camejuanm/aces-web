@@ -51,3 +51,43 @@ $cursorStyle: 'pointer', 'grab', 'grabbing', 'move', 'zoom-in', 'zoom-out';
     cursor: #{$style};
   }
 }
+
+$sizes: 0, 2, 4, 8, 12, 16, 18, 20, 24, 32, 36, 48, 64;
+
+@each $size in $sizes {
+  .f-#{$size} {
+    font-size: #{$size}px !important;
+  }
+}
+
+.f-bold {
+  font-weight: bold;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+@each $size in $sizes {
+  .m-#{$size} {
+    margin: #{$size}px !important;
+  }
+  .mt-#{$size} {
+    margin-top: #{$size}px !important;
+  }
+  .mb-#{$size} {
+    margin-bottom: #{$size}px !important;
+  }
+  .p-#{$size} {
+    padding: #{$size}px !important;
+  }
+  .pb-#{$size} {
+    padding-bottom: #{$size}px !important;
+  }
+  .pt-#{$size} {
+    padding-top: #{$size}px !important;
+  }
+  .pl-#{$size} {
+    padding-left: #{$size}px !important;
+  }
+}

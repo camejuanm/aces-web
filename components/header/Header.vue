@@ -11,7 +11,7 @@
       <div class="grid_column main-nav" col="s3,l8">
         <headerMainNav :is-active="navActive" @toggle="navToggler" />
         <img
-          src="~static/img/menu-bar.svg"
+          src="assets/img/menu-bar.svg"
           class="toggler"
           alt=""
           @click="navToggler"
@@ -21,7 +21,7 @@
       <div class="grid_column second-nav" col="s3,l2">
         <ul class="second-nav">
           <li class="second-nav-item">
-            <img src="/img/icon-instagram.svg" alt="" />
+            <img src="assets/img/icon-instagram.svg" alt="" />
           </li>
         </ul>
       </div>
@@ -67,7 +67,7 @@ export default {
 
   background-color: #fff;
   color: #151515;
-  border-bottom: solid 1px rgba($color: #000000, $alpha: 0.1);
+  box-shadow: 0 5px 5px rgba($color: #000000, $alpha: 0.1);
 
   flex-direction: row;
   align-items: center;
