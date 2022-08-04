@@ -85,11 +85,27 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    optimizecss: true,
+    splitChunks: {
+      pages: true,
+      vendor: true,
+      commons: true,
+      runtime: true,
+      layouts: false
+    },
+    optimization: {
+      splitChunks: {
+        minSize: 20000,
+        maxSize: 500000
+      }
+    }
+  },
 
   styleResources: {
     scss: ['./assets/scss/partials/_variables.scss']
   },
+
 
   dotenv: {}
 }
