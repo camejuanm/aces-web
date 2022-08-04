@@ -21,48 +21,13 @@
       <li class="blog-filter-item">Program Kerja</li>
       <li class="blog-filter-item">Akademik</li>
     </nav>
-
-    <LoadingHandler v-if="isLoading" add-class="vh-30" />
-    <section v-else class="blog-list">
-      <div
-        v-for="(data, index) in dataArticle.data"
-        :key="index"
-        class="card-wrapper"
-      >
-        <div class="thumbnail">
-          <img
-            :src="data.image != null ? data.image : '/img/default-image.jpg'"
-            alt=""
-          />
-        </div>
-        <div class="card-text">
-          <nuxt-link :to="`/blog/${data.slug}`"
-            ><span class="h4 title">{{ data.title }}</span></nuxt-link
-          >
-          <p>
-            {{ data.excerpt }}
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <Pagination
-      :total-pages="dataArticle.last_page"
-      :current-page="dataArticle.current_page"
-      :base-link="dataArticle.first_page_url.slice(0, -1)"
-      @first-page="toLink(dataArticle.first_page_url)"
-      @last-page="toLink(dataArticle.last_page_url)"
-      @next-page="toLink(dataArticle.next_page_url)"
-      @prev-page="toLink(dataArticle.prev_page_url)"
-      @input-page="toLink"
-    >
-    </Pagination>
   </main>
 </template>
 
 <script>
 export default {
   name: 'AcesBlog',
+  layouts: 'DefaultLayout',
   data() {
     return {
       dataArticle: null,

@@ -1,12 +1,12 @@
 <template>
-  <div id="app" class="sticky-container">
-    <div class="sticky-container-item">
+  <div id="app" class="sticky-footer-container">
+    <div class="sticky-footer-container-item">
       <Header />
     </div>
-    <div class="sticky-container-item --push">
+    <div class="sticky-footer-container-item --pushed">
       <nuxt />
     </div>
-    <div class="sticky-container-item --push">
+    <div class="sticky-footer-container-item">
       <Footer />
     </div>
   </div>
@@ -18,4 +18,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#app {
+  min-height: 100vh;
+}
+</style>
