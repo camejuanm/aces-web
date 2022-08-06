@@ -18,36 +18,10 @@
   }
 }
 
-#banner-hero {
+#project-slider {
   .slick-list {
-    z-index: 0;
-    img {
-      -webkit-user-drag: none;
-      user-select: none;
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      max-height: 300px;
-      filter: brightness(0.6);
-      @media #{$large} {
-        max-height: 400px;
-      }
-      @media #{$large} {
-        max-height: 600px;
-      }
-    }
-  }
-  .slick-dots {
-    display: flex !important;
-    justify-content: center;
-
-    position: relative;
-    margin-top: -60px;
-    padding: 0 5%;
-
-    li {
-      width: 100%;
-      max-width: 62px;
+    .slick-track {
+      overflow: hidden;
     }
   }
 }

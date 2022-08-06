@@ -1,6 +1,7 @@
 @import 'modules/modules';
 @import 'partials/normalize';
 @import 'partials/helpers';
+@import 'partials/reset';
 @import 'plugins/plugins';
 html {
   font: 400 14px $base_font_family;
@@ -16,6 +17,13 @@ html {
 
 body {
   background: #fff;
+}
+
+#__nuxt,
+#__layout,
+.blank-layout {
+  height: 100vh;
+  width: 100%;
 }
 
 .site-main {

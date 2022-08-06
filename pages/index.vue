@@ -1,9 +1,9 @@
 <template>
   <main class="site-main">
+    <landingAnnouncer />
     <landingSec1 />
     <landingSec2 />
     <landingSec3 />
-    <landingSec4 />
   </main>
 </template>
 

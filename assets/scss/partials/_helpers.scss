@@ -60,12 +60,49 @@ $sizes: 0, 2, 4, 8, 12, 16, 18, 20, 24, 32, 36, 48, 64;
   }
 }
 
+@each $state, $color in $palettes {
+  .text-#{$state} {
+    color: $color;
+  }
+
+  .bg-#{$state} {
+    background-color: $color;
+  }
+}
+
 .f-bold {
   font-weight: bold;
 }
 
 .full-width {
   width: 100% !important;
+}
+
+.full-height {
+  height: 100% !important;
+}
+
+.fit-content {
+  width: fit-content !important;
+}
+
+.md-only {
+  display: none;
+  @media #{$md} {
+    display: block;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.text-small {
+  font-size: 80%;
+}
+
+.text-center {
+  text-align: center;
 }
 
 @each $size in $sizes {

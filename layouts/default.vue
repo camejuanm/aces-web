@@ -1,12 +1,12 @@
 <template>
-  <div id="app" class="sticky-container">
-    <div class="sticky-container-item">
+  <div id="app" class="sticky-footer-container">
+    <div class="sticky-footer-container-item">
       <Header />
     </div>
-    <div class="sticky-container-item --push">
+    <div class="sticky-footer-container-item --pushed">
       <nuxt />
     </div>
-    <div class="sticky-container-item --push">
+    <div class="sticky-footer-container-item">
       <Footer />
     </div>
   </div>

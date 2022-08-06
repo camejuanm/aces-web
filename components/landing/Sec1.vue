@@ -1,41 +1,28 @@
 <template>
-  <div class="hero-section">
-    <section id="banner-hero" class="slide-banner">
-      <div class="relative">
-        <VueSlickCarousel v-bind="settingsBanner">
-          <div v-for="i in 3" :key="i" class="relative">
-            <img class="full-width" :src="`assets/img/slide-1.png`" alt="" />
-            <div
-              class="banner-content container flex flex-col v-center f-space-between"
-            >
-              <div class="full-width flex f-space-between">
-                <span>
-                  Part of
-                  <a
-                    href="https://umn.ac.id"
-                    class="blue-link f-bold"
-                    target="blank"
-                    >umn.ac.id</a
-                  >
-                </span>
-                <span>#TheFewTheProud</span>
-              </div>
-              <div class="flex flex-col">
-                <span class="hero-description"> We Are . . . </span>
-                <h1 class="hero-title">THE ACES</h1>
-                <span class="hero-description">
-                  Association of Computer Engineering Students
-                </span>
-              </div>
-            </div>
-          </div>
-          <template #customPaging>
-            <div class="custom-dot"></div>
-          </template>
-        </VueSlickCarousel>
+  <section class="hero-section">
+    <span class="border-box-1"></span>
+    <div class="container">
+      <span class="border-box"></span>
+
+      <div class="flex flex-col hero-desc full-width pl-12 pr-12">
+        <span class="title mt-64">
+          ASSOCIATION <br />
+          OF COMPUTER <br />
+          ENGINEERING STUDENTS
+        </span>
       </div>
-    </section>
-  </div>
+      <div
+        class="flex flex-row hero-nav f-space-between full-width h-center pl-12 pr-12"
+      >
+        <div class="flex flex-row col-gap-24">
+          <a href="#about" style="color: #fff; font-weight: normal"
+            >/About us</a
+          >
+        </div>
+        <div class="flex md-only">Part of <a href="#">umn.ac.id</a></div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -43,17 +30,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 export default {
   name: 'BannerHero',
   data() {
-    return {
-      settingsBanner: {
-        arrows: false,
-        dots: true,
-        autoplay: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 1
-      }
-    }
+    return {}
   },
   methods: {}
 }
@@ -62,77 +39,68 @@ export default {
 .hero {
   &-section {
     width: 100%;
-    background-color: #fff;
-    font-family: Poppins-Light, sans-serif;
-  }
-  &-title {
-    font-size: 72px;
-    margin: 0;
+    max-width: 100%;
+    min-height: 80vh;
+    display: flex;
+
+    color: #fff;
+    font-family: 'Poppins-ExtraLight', sans-serif;
+
+    background: url('/assets/img/background-hero.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
 
     @media #{$large} {
-      font-size: 90px;
+      min-height: 80vh;
+      max-height: 80vh;
     }
-  }
-  &-description {
-    font-size: 14px;
-    @media #{$large} {
-      font-size: 18px;
-    }
-  }
-}
 
-.slide-banner {
-  padding-bottom: 40px;
-
-  .custom-dot {
-    border-left: 1px solid #e6ecec;
-    border-bottom: 6px solid #e6ecec;
-    color: #cdd3da;
-    cursor: pointer;
-
-    margin: 0 3px;
-  }
-  .slick-active {
-    .custom-dot {
+    a {
+      color: $blue;
       font-weight: bold;
-      border-bottom-color: $primary;
     }
-  }
-  img {
-    object-fit: cover;
-    overflow: hidden;
-    height: 350px;
-    min-height: 350px;
-    max-height: 350px;
 
-    @media #{$large} {
-      height: 550px;
-      min-height: 550px;
-      max-height: 550px;
+    .container {
+      position: relative;
+    }
+
+    .border-box {
+      min-width: 100%;
+      min-height: 100%;
+      border-left: 1px solid rgba($color: #969696, $alpha: 0.5);
+      border-right: 1px solid rgba($color: #969696, $alpha: 0.5);
+
+      position: absolute;
+      left: 0;
+    }
+
+    .border-box-1 {
+      min-width: 100%;
+      min-height: 85%;
+      top: 5%;
+      border-top: 1px solid rgba($color: #969696, $alpha: 0.5);
+      border-bottom: 1px solid rgba($color: #969696, $alpha: 0.5);
+
+      position: absolute;
+      left: 0;
     }
   }
-  .banner-content {
+  &-desc {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    width: 90%;
-    height: 60%;
+    bottom: 20%;
 
-    @media #{$large} {
+    .title {
       width: 100%;
-      top: 35%;
-      height: 55%;
+      margin-bottom: 3em;
+      font-family: 'Poppins-ExtraLight', sans-serif;
+      font-size: 2.5em;
+      letter-spacing: 2px;
     }
   }
-}
 
-.relative {
-  position: relative !important;
-}
-
-.blue-link {
-  color: #08a3fa;
+  &-nav {
+    position: absolute;
+    bottom: 10%;
+  }
 }
 </style>

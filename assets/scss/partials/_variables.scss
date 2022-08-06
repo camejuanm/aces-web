@@ -11,7 +11,9 @@ $xl: 'screen and (min-width: 75em)';
 // colors
 $palettes: (
   'primary': #ff7a00,
-  'dark': #222222
+  'dark': #222222,
+  'yellow': #febc14,
+  'blue': #08a3fa
 );
 
 $light-palettes: (
@@ -31,3 +33,5 @@ $light-palettes: (
 
 $primary: palette('primary');
 $dark: palette('dark');
+$blue: palette('blue');
+$yellow: palette('yellow');
