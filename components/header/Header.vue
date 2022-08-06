@@ -11,7 +11,7 @@
       <div class="grid_column main-nav" col="s3,l8">
         <headerMainNav :is-active="navActive" @toggle="navToggler" />
         <img
-          src="assets/img/menu-bar.svg"
+          :src="`${$baseurl()}/assets/img/menu-bar.svg`"
           class="toggler"
           alt=""
           @click="navToggler"
@@ -21,7 +21,7 @@
       <div class="grid_column second-nav" col="s3,l2">
         <ul class="second-nav">
           <li class="second-nav-item">
-            <img src="assets/img/icon-instagram.svg" alt="" />
+            <img :src="`${$baseurl()}/assets/img/icon-instagram.svg`" alt="" />
           </li>
         </ul>
       </div>

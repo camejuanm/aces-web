@@ -11,11 +11,17 @@
     <section class="article-content">
       <div class="article-content-wrapper" v-html="dataArticle.body"></div>
     </section>
+    <section class="footer">
+      <span>Share this article</span>
+    </section>
   </main>
 </template>
 
 <script>
 export default {
+  asyncData ({ params, error, payload }) {
+    if (payload) return { dataArticle: payload }
+  },
   data() {
     return {
       dataArticle: null
@@ -27,8 +33,6 @@ export default {
     ])
       .then(res => {
         this.dataArticle = res[0].data
-        // eslint-disable-next-line no-console
-        console.log(this.dataArticle)
       })
       .catch(error => {
         // eslint-disable-next-line no-console
