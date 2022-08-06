@@ -4,7 +4,7 @@
     class="article-card flex flex-col shadow full-width text-black"
   >
     <img
-      :src="data.image ? data.image : 'assets/img/default-image.jpg'"
+      :src="data.image ? data.image : `${$baseurl()}/assets/img/default-image.jpg`"
       alt=""
     />
     <span v-if="data.category.name != ''" class="category">{{

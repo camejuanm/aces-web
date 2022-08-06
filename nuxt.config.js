@@ -1,3 +1,4 @@
+import axios from 'axios'
 const AxiosInstance = {
   baseURL: process.env.BASE_URL,
   withCredentials: false,
@@ -6,6 +7,19 @@ const AxiosInstance = {
     Accept: 'application/json',
     'Content-Type': 'application/json'
   }
+}
+
+const dynamicRoutes = async () => {
+  const resArticle  = await axios.get(`${process.env.API_URL}/posts`)
+  const routesArticle = resArticle.data.data.map((article) => {
+    return {
+      route: `/article/${article.slug}`,
+      payload: article
+    }
+  })
+
+  const routes = routesArticle
+  return routes
 }
 
 export default {
@@ -29,6 +43,10 @@ export default {
   env: {
     BASE_URL: process.env.BASE_URL,
     API_URL: process.env.API_URL
+  },
+
+  generate: {
+    routes: dynamicRoutes
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -99,7 +117,7 @@ export default {
         minSize: 20000,
         maxSize: 500000
       }
-    }
+    },
   },
 
   styleResources: {

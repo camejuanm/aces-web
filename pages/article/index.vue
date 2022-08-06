@@ -103,8 +103,6 @@ export default {
       this.isLoading = true
       if (link !== null) {
         await this.$axios.get(link).then(res => {
-          // eslint-disable-next-line no-console
-          console.log('===>', res)
           this.dataArticle = res.data
         })
       }
