@@ -3,6 +3,10 @@ export default (context, inject) => {
     return process.env.API_URL
   }
 
+  const baseurl = () => {
+    return process.env.BASE_URL
+  }
+
   const months = {
     id: {
       short: 'Jan_Feb_Mar_Apr_Mei_Jun_Jul_Agt_Sep_Okt_Nov_Des'.split('_'),
@@ -38,6 +42,7 @@ export default (context, inject) => {
     return `${numPrefix(day)} ${monthName} ${year}`
   }
 
+  inject('baseurl', baseurl)
   inject('apiurl', apiurl)
   inject('formatCurrentDate', formatCurrentDate)
 }

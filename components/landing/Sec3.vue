@@ -1,35 +1,19 @@
 <template>
   <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
-  <section v-else class="team-section">
+  <section v-else id="about" class="team-section">
     <div class="grid container">
       <div class="grid_column">
         <h1 class="title">
           ACES <br />
           Generation XII
         </h1>
-        <p id="visi">
-          <span>Visi : </span> Menjadikan ACES sebagai himpunan yang aktif
-          berkontribusi dan responsif bagi anggota, almamater, dan masyarakat.
-        </p>
+        <div id="visi" class="mb-12 mt-24">
+          <span>Visi:</span>
+          <div class="full-width" v-html="dataProfile[1].visi"></div>
+        </div>
         <div id="misi">
-          <span>Misi : </span>
-          <ul>
-            <li>
-              - Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Assumenda, fugiat vero! Neque recusandae iure aliquam tempore
-              amet, sapiente maiores voluptatem, sed reprehenderit culpa
-              accusantium dolorem eum corrupti! Accusantium, labore inventore!
-            </li>
-            <li>
-              - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum
-              explicabo, quo laborum mollitia a dolore alias aliquam ad modi
-              eius?
-            </li>
-            <li>
-              - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
-              assumenda quae dolorem voluptates iusto?
-            </li>
-          </ul>
+          <span>Misi:</span>
+          <div class="full-width" v-html="dataProfile[1].misi"></div>
         </div>
         <VueSlickCarousel class="slider" v-bind="sliderOptions">
           <div v-for="(people, index) in dataPengurus" :key="index">
@@ -59,7 +43,8 @@ export default {
   name: 'TeamSection',
   data() {
     return {
-      dataPengurus: null,
+      dataPengurus: {},
+      dataProfile: {},
 
       sliderOptions: {
         arrows: false,
@@ -89,12 +74,14 @@ export default {
     await Promise.all([
       this.$axios.get(
         `${this.$apiurl()}/frontliners?generation=aces-generation-12`
-      )
+      ),
+      this.$axios.get(`${this.$apiurl()}/generations`)
     ])
       .then(res => {
         this.dataPengurus = res[0].data
+        this.dataProfile = res[1].data
         // eslint-disable-next-line no-console
-        console.log(this.dataPengurus)
+        console.log(res[1].data)
       })
       .catch(error => {
         // eslint-disable-next-line no-console

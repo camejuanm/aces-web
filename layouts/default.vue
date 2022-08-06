@@ -18,8 +18,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-#app {
-  min-height: 100vh;
-}
-</style>
+<style lang="scss" scoped></style>

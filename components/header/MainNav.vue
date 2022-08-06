@@ -4,9 +4,14 @@
       <span @click="toggler">X</span>
     </div>
     <ul class="nav-item">
-      <li class="nav-link"><nuxt-link to="/blog">Blog</nuxt-link></li>
-      <li class="nav-link"><nuxt-link to="/labs">Labs</nuxt-link></li>
-      <li class="nav-link"><nuxt-link to="/about">About</nuxt-link></li>
+      <li class="nav-link">
+        <nuxt-link to="/article" @click.native="$emit('toggle')"
+          >Article</nuxt-link
+        >
+      </li>
+      <li class="nav-link">
+        <nuxt-link to="/labs" @click.native="$emit('toggle')">Labs</nuxt-link>
+      </li>
     </ul>
   </nav>
 </template>

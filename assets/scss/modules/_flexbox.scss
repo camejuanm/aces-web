@@ -34,3 +34,14 @@
 .f-space-between {
   justify-content: space-between;
 }
+
+.lg-flex-col {
+  @media #{$large} {
+    flex-direction: column;
+  }
+}
+.lg-flex-row {
+  @media #{$large} {
+    flex-direction: row;
+  }
+}
