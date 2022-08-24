@@ -7,6 +7,10 @@ export default (context, inject) => {
     return process.env.BASE_URL
   }
 
+  const currenturl = () => {
+    return location.href
+  }
+
   const months = {
     id: {
       short: 'Jan_Feb_Mar_Apr_Mei_Jun_Jul_Agt_Sep_Okt_Nov_Des'.split('_'),
@@ -43,6 +47,7 @@ export default (context, inject) => {
   }
 
   inject('baseurl', baseurl)
+  inject('currenturl', currenturl)
   inject('apiurl', apiurl)
   inject('formatCurrentDate', formatCurrentDate)
 }
