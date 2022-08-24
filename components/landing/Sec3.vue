@@ -9,18 +9,22 @@
         </h1>
         <div id="visi" class="mb-12 mt-24">
           <span>Visi:</span>
-          <div class="full-width" v-html="dataProfile[1].visi"></div>
+          <div class="full-width" v-html="dataProfile[0].visi"></div>
         </div>
         <div id="misi">
           <span>Misi:</span>
-          <div class="full-width" v-html="dataProfile[1].misi"></div>
+          <div class="full-width" v-html="dataProfile[0].misi"></div>
         </div>
         <VueSlickCarousel class="slider" v-bind="sliderOptions">
           <div v-for="(people, index) in dataPengurus" :key="index">
             <div class="slider-item">
               <div class="card-wrapper">
                 <img
-                  :src="'assets/img/image-none.png'"
+                  :src="
+                    people.image
+                      ? `http://aces-backend.matthewbd.my.id/storage/${people.image}`
+                      : 'assets/img/image-none.png'
+                  "
                   class="card-image"
                   alt=""
                 />
@@ -80,8 +84,6 @@ export default {
       .then(res => {
         this.dataPengurus = res[0].data
         this.dataProfile = res[1].data
-        // eslint-disable-next-line no-console
-        console.log(res[1].data)
       })
       .catch(error => {
         // eslint-disable-next-line no-console

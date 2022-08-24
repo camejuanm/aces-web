@@ -3,12 +3,17 @@
     <div class="flex col-gap-4">
       <button
         class="btn-pagination cursor-pointer"
+        :class="{ disabled: currentPage <= 1 }"
         @click="$emit('first-page')"
       >
-        >>
+        <i class="i-angle-double-left f-16"></i>
       </button>
-      <button class="btn-pagination cursor-pointer" @click="$emit('prev-page')">
-        >
+      <button
+        class="btn-pagination cursor-pointer"
+        :class="{ disabled: currentPage <= 1 }"
+        @click="$emit('prev-page')"
+      >
+        <i class="i-angle-left f-16"></i>
       </button>
     </div>
     <input
@@ -26,11 +31,19 @@
     <span class="text-grey">/</span>
     <span class="text-grey">{{ totalPages }}</span>
     <div class="flex col-gap-4">
-      <button class="btn-pagination cursor-pointer" @click="$emit('next-page')">
-        >
+      <button
+        class="btn-pagination cursor-pointer"
+        :class="{ disabled: currentPage >= totalPages }"
+        @click="$emit('next-page')"
+      >
+        <i class="i-angle-right f-16"></i>
       </button>
-      <button class="btn-pagination cursor-pointer" @click="$emit('last-page')">
-        >>
+      <button
+        class="btn-pagination cursor-pointer"
+        :class="{ disabled: currentPage >= totalPages }"
+        @click="$emit('last-page')"
+      >
+        <i class="i-angle-double-right f-16"></i>
       </button>
     </div>
   </div>
@@ -59,9 +72,9 @@ export default {
 <style lang="scss" scoped>
 .btn-pagination {
   padding: 6px 8px;
-  background: #fff;
-
-  border: 1px solid rgba($color: #000000, $alpha: 0.3);
+  background: #3d3d3d;
+  color: #fff;
+  border: none;
   border-radius: 3px;
 }
 
@@ -79,5 +92,10 @@ input[type='number']::-webkit-outer-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+.disabled {
+  background-color: #b6b6b6;
+  border: none;
 }
 </style>

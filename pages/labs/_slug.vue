@@ -2,14 +2,14 @@
   <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
   <main v-else class="site-main container">
     <section class="article-header">
-      <h1 class="h1 title m-0">{{ dataArticle.title }}</h1>
+      <h1 class="h1 title m-0">{{ dataLabs.title }}</h1>
       <span class="date"
-        >Author: {{ dataArticle.author.name }} |
-        {{ $formatCurrentDate(dataArticle.updated_at) }}</span
+        >Author: {{ dataLabs.author.name }} |
+        {{ $formatCurrentDate(dataLabs.updated_at) }}</span
       >
     </section>
     <section class="article-content">
-      <div class="article-content-wrapper" v-html="dataArticle.body"></div>
+      <div class="article-content-wrapper" v-html="dataLabs.body"></div>
     </section>
   </main>
 </template>
@@ -18,15 +18,15 @@
 export default {
   data() {
     return {
-      dataArticle: null
+      dataLabs: null
     }
   },
   async fetch() {
     await Promise.all([
-      this.$axios.get(`${this.$apiurl()}/posts/${this.$route.params.slug}`)
+      this.$axios.get(`${this.$apiurl()}/labs/${this.$route.params.slug}`)
     ])
       .then(res => {
-        this.dataArticle = res[0].data
+        this.dataLabs = res[0].data
       })
       .catch(error => {
         // eslint-disable-next-line no-console

@@ -10,7 +10,7 @@
         <div v-for="(data, index) of menu" :key="index">
           <div class="slider-item">
             <div class="card-wrapper">
-              <img :src="data.img" class="card-image" alt="" />
+              <img v-lazy-load :data-src="data.img" class="card-image" alt="" />
               <div class="card-desc flex flex-col mt-18">
                 <span class="title">{{ data.title }}</span>
                 <p>{{ data.description }}</p>

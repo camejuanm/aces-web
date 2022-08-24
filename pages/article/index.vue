@@ -13,22 +13,19 @@
       </div>
     </section>
 
-    <ul class="blog-filter tabs-bar mb-32">
-      <li
-        class="tabs-bar-item"
-        :class="{ 'tabs-bar-item-active': currentTab == 'program-kerja' }"
-        @click="changeTab('program-kerja')"
-      >
-        Program Kerja
-      </li>
-      <li
-        class="tabs-bar-item"
-        :class="{ 'tabs-bar-item-active': currentTab == 'akademik' }"
-        @click="changeTab('akademik')"
-      >
-        Akademik
-      </li>
-    </ul>
+    <div v-if="!$fetchState.pending" class="full-width blog-filter mb-32">
+      <VueSlickCarousel v-bind="sliderOptions">
+        <div v-for="data in postCategory" :key="data.name" class="wrapper">
+          <div
+            class="item flex h-center pt-8 pb-8 cursor-pointer"
+            :class="category == data.slug ? 'active' : ''"
+            @click="changeCategory(data.slug)"
+          >
+            {{ data.name }}
+          </div>
+        </div>
+      </VueSlickCarousel>
+    </div>
 
     <LoadingHandler v-if="$fetchState.pending || isLoading" add-class="vh-60" />
     <section v-else id="proker" class="grid row-gap-16">
@@ -47,7 +44,7 @@
           :total-pages="dataArticle.last_page"
           :base-link="dataArticle.first_page_url.slice(0, -1)"
           @first-page="toLink(dataArticle.first_page_url)"
-          @previous-page="toLink(dataArticle.prev_page_url)"
+          @prev-page="toLink(dataArticle.prev_page_url)"
           @input-page="toLink"
           @next-page="toLink(dataArticle.next_page_url)"
           @last-page="toLink(dataArticle.last_page)"
@@ -58,6 +55,7 @@
 </template>
 
 <script>
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 export default {
   name: 'AcesBlog',
   layouts: 'DefaultLayout',
@@ -65,25 +63,54 @@ export default {
     return {
       currentTab: 'program-kerja',
       dataArticle: null,
-      isLoading: false
+      isLoading: true,
+      postCategory: [],
+      category: '',
+      sliderOptions: {
+        arrows: false,
+        dots: false,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              infinite: true,
+              centerMode: true,
+              centerPadding: '10px'
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      }
     }
   },
   async fetch() {
-    await Promise.all([
-      this.$axios.get(`${this.$apiurl()}/posts?category=program-kerja`)
-    ])
+    await Promise.all([this.$axios.get(`${this.$apiurl()}/categories`)])
       .then(res => {
-        this.dataArticle = res[0].data
+        this.postCategory = res[0].data
       })
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log(error.response)
       })
+    await this.filterCategory('')
+    this.isLoading = false
   },
   methods: {
-    changeTab(tab) {
-      this.currentTab = tab
-      this.filterCategory(tab)
+    changeCategory(category) {
+      this.category = category
+      this.filterCategory(category)
     },
     async filterCategory(category) {
       this.isLoading = true
@@ -155,17 +182,16 @@ export default {
 .blog-filter {
   border-top: 1px solid #969696;
   border-bottom: 1px solid #969696;
+  padding: 8px 0;
 
-  .tabs-bar-item {
-    flex-grow: 1;
-    @media #{$large} {
-      flex-grow: unset;
-      padding: 12px 40px;
-    }
-    &-active {
-      background-color: #dfdfdf;
-      font-weight: 300;
-    }
+  .active {
+    background: #fac473 !important;
+  }
+
+  .item {
+    background-color: #dfdfdf;
+    margin-right: 1em;
+    border-radius: 6px;
   }
 }
 
