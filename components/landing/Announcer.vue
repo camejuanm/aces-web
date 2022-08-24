@@ -2,11 +2,8 @@
   <section>
     <div class="announcer-container flex v-center h-center">
       <div class="container flex flex-col lg-flex-row v-center h-center">
-        <span>
-          ACES DAY : Sharing Magang MBKM & Program Bangkit Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Dolores, nam?</span
-        >
-        <button class="btn-primary fit-content">More Info</button>
+        <span> {{ title }} </span>
+        <a :href="url" class="btn-primary fit-content">More Info</a>
       </div>
     </div>
   </section>
@@ -15,8 +12,15 @@
 <script>
 export default {
   name: 'AnnouncerSection',
-  data() {
-    return {}
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    url: {
+      type: String,
+      default: ''
+    }
   },
   methods: {}
 }

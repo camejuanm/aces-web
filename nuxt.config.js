@@ -9,23 +9,10 @@ const AxiosInstance = {
   }
 }
 
-const dynamicRoutes = async () => {
-  const resArticle  = await axios.get(`${process.env.API_URL}/posts`)
-  const routesArticle = resArticle.data.data.map((article) => {
-    return {
-      route: `/article/${article.slug}`,
-      payload: article
-    }
-  })
-
-  const routes = routesArticle
-  return routes
-}
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'aces-base',
+    title: 'ACES UMN',
     htmlAttrs: {
       lang: 'en'
     },
@@ -43,10 +30,6 @@ export default {
   env: {
     BASE_URL: process.env.BASE_URL,
     API_URL: process.env.API_URL
-  },
-
-  generate: {
-    routes: dynamicRoutes
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -75,7 +58,8 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-lazy-load'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

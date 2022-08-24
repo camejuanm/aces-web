@@ -39,7 +39,7 @@
             :total-pages="dataLabs.last_page"
             :base-link="dataLabs.first_page_url.slice(0, -1)"
             @first-page="toLink(dataLabs.first_page_url)"
-            @previous-page="toLink(dataLabs.prev_page_url)"
+            @prev-page="toLink(dataLabs.prev_page_url)"
             @input-page="toLink"
             @next-page="toLink(dataLabs.next_page_url)"
             @last-page="toLink(dataLabs.last_page)"
@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 export default {
   name: 'LabsIndex',
   data() {

@@ -1,14 +1,12 @@
 <template>
-  <section class="hero-section">
+  <section class="hero-section" :lazy-background="background">
     <span class="border-box-1"></span>
     <div class="container">
       <span class="border-box"></span>
 
       <div class="flex flex-col hero-desc full-width pl-12 pr-12">
         <span class="title mt-64">
-          ASSOCIATION <br />
-          OF COMPUTER <br />
-          ENGINEERING STUDENTS
+          {{ text }}
         </span>
       </div>
       <div
@@ -29,10 +27,16 @@
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 export default {
   name: 'BannerHero',
-  data() {
-    return {}
-  },
-  methods: {}
+  props: {
+    background: {
+      type: String,
+      default: '/assets/img/background-hero.jpg'
+    },
+    text: {
+      type: String,
+      default: 'ASSOCIATION OF COMPUTER ENGINEERING STUDENTS'
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -46,7 +50,9 @@ export default {
     color: #fff;
     font-family: 'Poppins-ExtraLight', sans-serif;
 
-    background: url('/assets/img/background-hero.jpg') no-repeat center center;
+    // background: url('/assets/img/background-hero.jpg') no-repeat center center;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     position: relative;
 
@@ -95,6 +101,16 @@ export default {
       font-family: 'Poppins-ExtraLight', sans-serif;
       font-size: 2.5em;
       letter-spacing: 2px;
+
+      @media #{$md} {
+        max-width: 70%;
+      }
+      @media #{$large} {
+        max-width: 60%;
+      }
+      @media #{$xl} {
+        max-width: 40%;
+      }
     }
   }
 

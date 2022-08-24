@@ -1,5 +1,8 @@
 <template>
-  <nuxt-link :to="'#'" class="flex flex-col shadow full-width pl-8 pr-8">
+  <nuxt-link
+    :to="generateLink(data.slug)"
+    class="flex flex-col shadow full-width pl-8 pr-8"
+  >
     <div class="labs-card flex flex-col">
       <h4 class="m-0">{{ data.title }}</h4>
       <span class="text-small author mt-8">Author: {{ data.author.name }}</span>
@@ -27,6 +30,14 @@ export default {
     data: {
       type: Object,
       default: () => {}
+    }
+  },
+  methods: {
+    generateLink(params) {
+      return {
+        name: 'labs-slug',
+        params: { slug: params }
+      }
     }
   }
 }
