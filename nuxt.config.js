@@ -1,4 +1,6 @@
 import axios from 'axios'
+import defaultMeta from './config/defaultMeta'
+
 const AxiosInstance = {
   baseURL: process.env.BASE_URL,
   withCredentials: false,
@@ -16,12 +18,7 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
-    ],
+    meta: defaultMeta,
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 

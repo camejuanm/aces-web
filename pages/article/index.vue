@@ -6,10 +6,7 @@
           Welcome <br />
           to Our Journey
         </p>
-        <p class="subtitle">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci,
-          minima.
-        </p>
+        <p class="subtitle">Keeps you up with ACES updates and our progress.</p>
       </div>
     </section>
 
