@@ -23,8 +23,6 @@ export default {
       this.$axios.get(`${this.$apiurl()}/websiteconfiguration`)
     ])
       .then(res => {
-        // eslint-disable-next-line no-console
-        console.log(res)
         this.webConf = res[0].data
       })
       .catch(error => {

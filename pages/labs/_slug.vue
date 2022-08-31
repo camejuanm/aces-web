@@ -1,6 +1,7 @@
 <template>
   <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
   <main v-else class="site-main container">
+    <img :src="dataLabs.image" class="full-width" alt="" />
     <section class="article-header">
       <h1 class="h1 title m-0">{{ dataLabs.title }}</h1>
       <span class="date"

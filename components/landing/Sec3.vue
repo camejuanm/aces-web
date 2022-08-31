@@ -22,7 +22,7 @@
                 <img
                   :src="
                     people.image
-                      ? `http://aces-backend.matthewbd.my.id/storage/${people.image}`
+                      ? `${people.image}`
                       : 'assets/img/image-none.png'
                   "
                   class="card-image"
