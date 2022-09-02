@@ -5,6 +5,7 @@
       :url="webConf.announcement_link"
     />
     <landingSec1 :background="webConf.hero_image" :text="webConf.header_hero" />
+    <landingSec4 />
     <landingSec2 />
     <landingSec3 />
   </main>

@@ -6,7 +6,7 @@
         >We not just part of system. <br />
         We create it!</span
       >
-      <VueSlickCarousel class="#project-slider" v-bind="sliderOptions">
+      <VueSlickCarousel v-bind="sliderOptions">
         <div v-for="(data, index) of menu" :key="index">
           <div class="slider-item">
             <div class="card-wrapper">
