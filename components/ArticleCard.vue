@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="generateLink(data.slug)"
+    :to="generateLink()"
     class="article-card flex flex-col shadow full-width text-black"
   >
     <img
@@ -30,10 +30,22 @@ export default {
     }
   },
   methods: {
-    generateLink(params) {
-      return {
-        name: 'article-slug',
-        params: { slug: params }
+    generateLink() {
+      if (this.data.category.slug === 'survey-aces') {
+        return {
+          name: 'survey-slug',
+          params: { slug: this.data.slug }
+        }
+      } else if (this.data.category.slug === 'open-recruitment') {
+        return {
+          name: 'oprec-slug',
+          params: { slug: this.data.slug }
+        }
+      } else {
+        return {
+          name: 'article-slug',
+          params: { slug: this.data.slug }
+        }
       }
     }
   }
@@ -48,6 +60,7 @@ export default {
   box-shadow: 0px 8px 16px 5px rgba(159, 159, 159, 0.13);
   min-height: 300px;
   max-height: 300px;
+
   overflow: hidden;
 
   .category {

@@ -7,7 +7,10 @@
           <h3 class="text-center">ACES LABS</h3>
           <VueSlickCarousel class="slider" v-bind="sliderOptions">
             <div v-for="i of 3" :key="i" class="flex">
-              <LabsCard :data="dataLabs.data[i - 1]" />
+              <LabsCard
+                v-if="i <= dataLabs.data.length"
+                :data="dataLabs.data[i - 1]"
+              />
             </div>
           </VueSlickCarousel>
         </div>
@@ -23,6 +26,7 @@
           <img src="assets/img/labs-banner-1.jpg" alt="banner" />
         </div>
       </section>
+
       <section class="grid row-gap-16 mt-12 mb-32 container">
         <div
           v-for="data of dataLabs.data"
@@ -58,7 +62,7 @@ export default {
     return {
       dataLabs: {},
 
-      isLoading: false,
+      isLoading: true,
       sliderOptions: {
         arrows: false,
         dots: false,
@@ -85,6 +89,7 @@ export default {
         // eslint-disable-next-line no-console
         console.log(error.response)
       })
+    this.isLoading = false
   },
   methods: {
     async toLink(link) {

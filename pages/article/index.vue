@@ -10,18 +10,15 @@
       </div>
     </section>
 
-    <div v-if="!$fetchState.pending" class="full-width blog-filter mb-32">
-      <VueSlickCarousel v-bind="sliderOptions">
-        <div v-for="data in postCategory" :key="data.name" class="wrapper">
-          <div
-            class="item flex h-center pt-8 pb-8 cursor-pointer"
-            :class="category == data.slug ? 'active' : ''"
-            @click="changeCategory(data.slug)"
-          >
-            {{ data.name }}
-          </div>
-        </div>
-      </VueSlickCarousel>
+    <div v-if="!$fetchState.pending" class="full-width mb-32">
+      <DropdownCategory
+        placeholder="Select category"
+        class="filter-category"
+        :active="category"
+        :list="postCategory"
+        :delete-btn="true"
+        @clicked="changeCategory"
+      />
     </div>
 
     <LoadingHandler v-if="$fetchState.pending || isLoading" add-class="vh-60" />
@@ -95,7 +92,12 @@ export default {
   async fetch() {
     await Promise.all([this.$axios.get(`${this.$apiurl()}/categories`)])
       .then(res => {
+        // for (const data of res[0].data) {
+        //   this.postCategory = [...this.postCategory, data.slug]
+        // }
         this.postCategory = res[0].data
+        // eslint-disable-next-line no-console
+        console.log(this.postCategory)
       })
       .catch(error => {
         // eslint-disable-next-line no-console
@@ -109,7 +111,7 @@ export default {
       this.category = category
       this.filterCategory(category)
     },
-    async filterCategory(category) {
+    async filterCategory(category = '') {
       this.isLoading = true
       await Promise.all([
         this.$axios.get(`${this.$apiurl()}/posts?category=${category}`)
@@ -168,27 +170,14 @@ export default {
       font-family: Italiana, serif;
 
       margin: 0.5em 0;
-
-      @media #{$large} {
-        margin: 1em 0;
-      }
     }
   }
 }
 
-.blog-filter {
-  border-top: 1px solid #969696;
-  border-bottom: 1px solid #969696;
-  padding: 8px 0;
-
-  .active {
-    background: #fac473 !important;
-  }
-
-  .item {
-    background-color: #dfdfdf;
-    margin-right: 1em;
-    border-radius: 6px;
+.filter-category {
+  width: 100%;
+  @media #{$large} {
+    max-width: 300px;
   }
 }
 
