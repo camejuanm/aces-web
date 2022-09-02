@@ -57,8 +57,8 @@ export default {
     position: relative;
 
     @media #{$large} {
-      min-height: 80vh;
-      max-height: 80vh;
+      min-height: 60vh;
+      max-height: 60vh;
     }
 
     a {

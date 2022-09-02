@@ -53,7 +53,7 @@ export default {
       sliderOptions: {
         arrows: false,
         dots: false,
-        infinite: false,
+        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         variableWidth: true,
