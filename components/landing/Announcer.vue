@@ -1,6 +1,7 @@
 <template>
-  <section>
+  <section v-if="title !== ''">
     <div class="announcer-container flex v-center h-center">
+      <img src="/assets/img/bg-banner-3.jpg" class="image-background" alt="" />
       <div class="container flex flex-col lg-flex-row v-center h-center">
         <span> {{ title }} </span>
         <a :href="url" class="btn-primary fit-content">More Info</a>
@@ -29,12 +30,23 @@ export default {
 <style lang="scss" scoped>
 .announcer {
   &-container {
-    background: url('/assets/img/background-announcer.jpg') no-repeat center
-      right;
-    background-size: cover;
+    position: relative;
+
     padding: 1em 0;
     min-height: 80px;
     color: #fff;
+
+    img {
+      position: absolute;
+      z-index: 0;
+
+      width: 100%;
+      object-fit: cover;
+      min-height: 100%;
+      left: 0;
+
+      filter: brightness(70%);
+    }
 
     span {
       white-space: nowrap;
@@ -50,6 +62,9 @@ export default {
 
     .btn-primary {
       margin-top: 8px;
+      background-color: #fff;
+      color: #222;
+      font-weight: 300;
     }
 
     @media #{$large} {
@@ -57,6 +72,8 @@ export default {
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       text-align: center;
 
       @media #{$large} {
