@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'ProjectSection',
+  name: 'WebFeaturesSection',
   data() {
     return {
       menu: [

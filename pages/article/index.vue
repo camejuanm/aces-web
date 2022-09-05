@@ -1,16 +1,33 @@
 <template>
-  <main class="site-main container">
-    <section class="blog-header grid">
-      <div class="grid_column" col="l6">
-        <p class="h1 title">
+  <main class="site-main">
+    <section class="blog-header flex flex-col h-center">
+      <img src="/assets/img/bg-banner-2.jpg" class="full-width" alt="" />
+      <div class="text flex flex-col container">
+        <p class="h1">
           Welcome <br />
           to Our Journey
         </p>
         <p class="subtitle">Keeps you up with ACES updates and our progress.</p>
       </div>
+      <div
+        v-if="!$fetchState.pending"
+        class="full-width mb-32 container lg-only"
+      >
+        <DropdownCategory
+          placeholder="Select category"
+          class="filter-category"
+          :active="category"
+          :list="postCategory"
+          :delete-btn="true"
+          @clicked="changeCategory"
+        />
+      </div>
     </section>
 
-    <div v-if="!$fetchState.pending" class="full-width mb-32">
+    <div
+      v-if="!$fetchState.pending"
+      class="full-width mb-16 container pl-16 pr-16 mobile-only"
+    >
       <DropdownCategory
         placeholder="Select category"
         class="filter-category"
@@ -22,17 +39,17 @@
     </div>
 
     <LoadingHandler v-if="$fetchState.pending || isLoading" add-class="vh-60" />
-    <section v-else id="proker" class="grid row-gap-16">
+    <section v-else class="full-width grid row-gap-16 container">
       <div
         v-for="data of dataArticle.data"
         :key="data.slug"
-        class="grid_column pl-8 pr-8"
-        col="s12,m6,l3"
+        class="grid_column article-wrapper"
+        col="s12,m6,l4"
       >
         <ArticleCard :data="data" />
       </div>
 
-      <div class="flex full-width v-center h-center">
+      <div class="flex full-width v-center h-center container">
         <Pagination
           :current-page="dataArticle.current_page"
           :total-pages="dataArticle.last_page"
@@ -92,12 +109,7 @@ export default {
   async fetch() {
     await Promise.all([this.$axios.get(`${this.$apiurl()}/categories`)])
       .then(res => {
-        // for (const data of res[0].data) {
-        //   this.postCategory = [...this.postCategory, data.slug]
-        // }
         this.postCategory = res[0].data
-        // eslint-disable-next-line no-console
-        console.log(this.postCategory)
       })
       .catch(error => {
         // eslint-disable-next-line no-console
@@ -148,28 +160,49 @@ export default {
   &-header {
     text-align: center;
     font-weight: 400;
+    position: relative;
+    margin: 0 0 1em 0;
+    min-height: 200px;
 
-    margin: 1em 0 1em 0;
+    color: #fff;
+
+    @media #{$md} {
+      min-height: 250px;
+    }
 
     @media #{$large} {
+      min-height: 300px;
       text-align: left;
-      margin: 0;
+      margin: 0 0 2em 0;
+    }
+    @media #{$xl} {
+      min-height: 400px;
     }
 
-    &-image {
-      img {
-        width: 100%;
-        max-height: 320px;
+    img {
+      position: absolute;
+      z-index: 0;
 
-        object-fit: cover;
-        object-position: top center;
+      width: 100%;
+      object-fit: cover;
+      min-height: 100%;
+      left: 0;
+
+      filter: brightness(70%);
+    }
+
+    .text {
+      position: relative;
+      z-index: 1;
+
+      .h1 {
+        font-family: Italiana, serif;
+        margin: 0.5em 0 0 0;
       }
-    }
 
-    .title {
-      font-family: Italiana, serif;
-
-      margin: 0.5em 0;
+      p {
+        margin: 0 0 2em 0;
+      }
     }
   }
 }
@@ -189,5 +222,12 @@ export default {
 
 .vh-60 {
   height: 60vh;
+}
+
+.article-wrapper {
+  padding: 0 16px;
+  @media #{$large} {
+    padding: 0 8px;
+  }
 }
 </style>

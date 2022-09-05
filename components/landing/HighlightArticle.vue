@@ -1,5 +1,5 @@
 <template>
-  <LoadingHandler v-if="$fetchState.pending" add-class="vh-60" />
+  <LoadingHandler v-if="$fetchState.pending" add-class="loading" />
   <section v-else class="article full-width mt-32 mb-32">
     <div class="container flex flex-col">
       <span class="m-0 title f-32 mb-12">SPOTLIGHT</span>
@@ -21,7 +21,7 @@
 <script>
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 export default {
-  name: 'ArticleSection',
+  name: 'HighlightArticle',
   data() {
     return {
       isLoading: true,
@@ -42,8 +42,6 @@ export default {
     await Promise.all([this.$axios.get(`${this.$apiurl()}/posts`)])
       .then(res => {
         this.dataArticle = res[0].data.data
-        // eslint-disable-next-line no-console
-        console.log(this.dataArticle)
       })
       .catch(error => {
         // eslint-disable-next-line no-console
@@ -67,5 +65,9 @@ export default {
   .title {
     font-family: 'Poppins-ExtraLight', sans-serif;
   }
+}
+
+.loading {
+  min-height: 370px;
 }
 </style>

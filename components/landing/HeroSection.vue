@@ -30,7 +30,7 @@ export default {
   props: {
     background: {
       type: String,
-      default: '/assets/img/background-hero.jpg'
+      default: '/assets/img/background-org.jpg'
     },
     text: {
       type: String,

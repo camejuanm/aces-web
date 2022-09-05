@@ -4,10 +4,14 @@
       :title="webConf.announcement_title"
       :url="webConf.announcement_link"
     />
-    <landingSec1 :background="webConf.hero_image" :text="webConf.header_hero" />
-    <landingSec4 />
-    <landingSec2 />
-    <landingSec3 />
+    <landingHeroSection
+      :background="webConf.hero_image"
+      :text="webConf.header_hero"
+    />
+    <landingHighlightArticle />
+    <landingWebFeatures />
+    <landingMedrel />
+    <landingAcesSection />
   </main>
 </template>
 

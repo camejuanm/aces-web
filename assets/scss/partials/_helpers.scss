@@ -90,9 +90,22 @@ $sizes: 0, 2, 4, 8, 12, 16, 18, 20, 24, 32, 36, 48, 64;
   margin-left: auto;
 }
 
+.mobile-only {
+  @media #{$large} {
+    display: none;
+  }
+}
+
 .md-only {
   display: none;
   @media #{$md} {
+    display: block;
+  }
+}
+
+.lg-only {
+  display: none;
+  @media #{$large} {
     display: block;
   }
 }
