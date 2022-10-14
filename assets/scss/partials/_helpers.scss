@@ -70,6 +70,16 @@ $sizes: 0, 2, 4, 8, 12, 16, 18, 20, 24, 32, 36, 48, 64;
   }
 }
 
+@each $state, $color in $light-palettes {
+  .text-#{$state} {
+    color: $color;
+  }
+
+  .bg-#{$state} {
+    background-color: $color;
+  }
+}
+
 .f-bold {
   font-weight: bold;
 }
@@ -144,4 +154,8 @@ $sizes: 0, 2, 4, 8, 12, 16, 18, 20, 24, 32, 36, 48, 64;
   .pl-#{$size} {
     padding-left: #{$size}px !important;
   }
+}
+
+.relative {
+  position: relative;
 }

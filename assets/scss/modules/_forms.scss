@@ -19,6 +19,10 @@
     cursor: not-allowed;
   }
 
+  &-error {
+    border-color: lighten($red, 10%);
+  }
+
   @at-root select#{&} {
     background-size: 10px;
     padding-right: 32px;
