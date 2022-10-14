@@ -1,4 +1,7 @@
 export default (context, inject) => {
+  const setCurrency = number => {
+    return Number(number).toLocaleString('id-ID')
+  }
   const apiurl = () => {
     return process.env.API_URL
   }
@@ -47,6 +50,7 @@ export default (context, inject) => {
   }
 
   inject('baseurl', baseurl)
+  inject('setCurrency', setCurrency)
   inject('currenturl', currenturl)
   inject('apiurl', apiurl)
   inject('formatCurrentDate', formatCurrentDate)

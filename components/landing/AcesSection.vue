@@ -20,6 +20,7 @@
             <div class="slider-item">
               <div class="card-wrapper">
                 <img
+                  v-lazy-load
                   :src="
                     people.image
                       ? `${people.image}`

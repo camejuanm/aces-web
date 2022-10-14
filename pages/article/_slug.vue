@@ -122,9 +122,7 @@ export default {
   }
 
   &-content {
-    text-align: justify;
     overflow: hidden;
-
     max-width: 920px;
 
     @media #{$md} {
@@ -136,11 +134,16 @@ export default {
     }
 
     &-wrapper {
-      p {
+      ::v-deep p {
         img[style] {
           width: 100%;
           max-width: 100%;
         }
+      }
+
+      ::v-deep a {
+        text-decoration: underline;
+        color: $dark;
       }
     }
   }

@@ -22,7 +22,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  target: 'static',
+  target: 'server',
   ssr: false,
   env: {
     BASE_URL: process.env.BASE_URL,
