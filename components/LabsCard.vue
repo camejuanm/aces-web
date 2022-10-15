@@ -11,9 +11,9 @@
         <span
           class="text-small label"
           :class="
-            data.labscategory.name === 'Backend Web Development'
+            data.labscategory.name === 'Web Development'
               ? 'label-blue'
-              : data.labscategory.name === 'DevSecOps'
+              : data.labscategory.name === 'IoT'
               ? 'label-yellow'
               : 'label-grey'
           "
@@ -75,13 +75,7 @@ export default {
   }
 
   .label {
-    background: #969696;
-    padding: 6px 12px;
-    border-radius: 12px;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    border-radius: 3px;
   }
 }
 </style>

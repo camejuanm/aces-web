@@ -25,7 +25,7 @@
     </section>
 
     <div
-      v-if="!$fetchState.pending"
+      v-if="!$fetchState.pending && postCategory.length"
       class="full-width mb-16 container pl-16 pr-16 mobile-only"
     >
       <DropdownCategory
@@ -38,8 +38,11 @@
       />
     </div>
 
-    <LoadingHandler v-if="$fetchState.pending || isLoading" add-class="vh-60" />
-    <section v-else class="full-width grid row-gap-16 container">
+    <LoadingHandler v-if="$fetchState.pending || isLoading" class="vh-40" />
+    <section
+      v-else-if="dataArticle"
+      class="full-width grid row-gap-16 container"
+    >
       <div
         v-for="data of dataArticle.data"
         :key="data.slug"
@@ -61,6 +64,9 @@
           @last-page="toLink(dataArticle.last_page)"
         />
       </div>
+    </section>
+    <section v-else class="full-width flex v-center h-center vh-40">
+      <span class="text-grey">Whoops, something was wrong.</span>
     </section>
   </main>
 </template>
@@ -220,8 +226,8 @@ export default {
   flex-direction: column;
 }
 
-.vh-60 {
-  height: 60vh;
+.vh-40 {
+  height: 40vh;
 }
 
 .article-wrapper {

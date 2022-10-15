@@ -1,10 +1,17 @@
 <template>
   <section v-if="title !== ''">
     <div class="announcer-container flex v-center h-center">
-      <img src="/assets/img/bg-banner-3.jpg" class="image-background" alt="" />
+      <img
+        v-lazy-load
+        src="/assets/img/bg-banner-3.jpg"
+        class="image-background"
+        alt=""
+      />
       <div class="container flex flex-col lg-flex-row v-center h-center">
         <span> {{ title }} </span>
-        <a :href="url" class="btn-primary fit-content">More Info</a>
+        <a v-if="url != '-'" :href="url" class="btn-primary fit-content">
+          More Info
+        </a>
       </div>
     </div>
   </section>

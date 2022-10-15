@@ -4,6 +4,7 @@
     class="article-card flex flex-col shadow full-width text-black"
   >
     <img
+      v-lazy-load
       :src="
         data.image ? data.image : `${$baseurl()}/assets/img/default-image.jpg`
       "

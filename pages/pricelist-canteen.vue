@@ -1,0 +1,530 @@
+<template>
+  <main class="site-main">
+    <section class="blog-header flex flex-col h-center full-width">
+      <img v-lazy-load src="/assets/img/AFK-34.jpg" class="full-width" alt="" />
+      <div class="text flex flex-col container">
+        <p class="h1">
+          Canteen <br />
+          UMN Pricelist
+        </p>
+        <p class="subtitle">
+          Hemat waktu anda untuk tidak mengililingi kantin UMN satu putaran.
+        </p>
+      </div>
+    </section>
+    <section class="filter pt-20 pb-32 bg-light-grey">
+      <div class="container">
+        <div class="flex flex-col row-gap-8 full-width">
+          <label for="price ">Jangkauan Harga:</label>
+          <div class="flex flex-col md-flex-row col-gap-12">
+            <input
+              v-model="filter.minPrice"
+              type="number"
+              class="form-input"
+              :class="{ 'form-input-error': errorMessage }"
+              placeholder="Min. price"
+            />
+            <span>-</span>
+            <input
+              v-model="filter.maxPrice"
+              type="number"
+              class="form-input"
+              :class="{ 'form-input-error': errorMessage }"
+              placeholder="Max. price"
+            />
+          </div>
+          <span class="text-small text-red">{{ errorMessage }}</span>
+          <button
+            :disabled="errorMessage ? true : false"
+            class="btn-primary fit-content"
+            @click="priceFilter"
+          >
+            Filter
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="pricelist full-width">
+      <div
+        v-for="(data, key) of dataCanteenTemp"
+        :key="key"
+        class="full-width relative"
+        style="border-top: 1px solid #151515"
+      >
+        <div class="content container grid">
+          <div class="grid_column title" col="s12,m5">
+            <h1 class="m-0">{{ data.name }}</h1>
+          </div>
+          <div class="grid_column grid" col="s12,m7">
+            <div class="grid_column" col="s8">
+              <span class="mb-12 f-bold">Menu:</span>
+              <ul class="p-0">
+                <li v-for="(menu, index) of data.menu" :key="index">
+                  <span v-if="menu.price"
+                    >Rp{{ $setCurrency(menu.price) }}</span
+                  >
+                  -
+                  {{ menu.name }}
+                </li>
+              </ul>
+              <span v-if="data.addOn" class="mb-12 f-bold">Add On:</span>
+              <ul v-if="data.addOn" class="p-0">
+                <li v-for="(addOn, i) of data.addOn" :key="i">
+                  <span v-if="addOn.price"
+                    >Rp{{ $setCurrency(addOn.price) }} -
+                  </span>
+
+                  {{ addOn.name }}
+                </li>
+              </ul>
+            </div>
+            <div class="grid_column image" col="s4">
+              <img
+                v-lazy-load
+                :src="[data.image ? data.image : '/assets/img/icon-food.svg']"
+                :class="{ 'default-image': !data.image }"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</template>
+
+<script>
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+export default {
+  name: 'PricelistCanteen',
+  layouts: 'DefaultLayout',
+  data() {
+    return {
+      dataCanteenTemp: null,
+      errorMessage: null,
+      filter: {
+        maxPrice: '',
+        minPrice: ''
+      },
+      dataCanteen: [
+        {
+          name: 'Selera Sigeulis',
+          menu: [
+            {
+              name: 'Paket Nasi Ayam (Goreng / Sambal / Bakar)',
+              price: 25000
+            },
+            {
+              name: 'Nasi Telur + Tempe / Tahu (Semur / Sambal / Dadar)',
+              price: 17000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Nasi Putih',
+              price: 6000
+            },
+            {
+              name: 'Ayam Goreng / Sambal',
+              price: 19000
+            },
+            {
+              name: 'Telur Semur / Sambal / Dadar / Ceplok',
+              price: 8000
+            },
+            {
+              name: 'Mie / Bihun Goreng',
+              price: 12000
+            },
+            {
+              name: 'Sayur Asem',
+              price: 7000
+            },
+            {
+              name: 'Tempe / Tahu',
+              price: 3000
+            },
+            {
+              name: 'Asinan Buah',
+              price: 15000
+            },
+            {
+              name: 'Rendang',
+              price: 20000
+            }
+          ]
+        },
+        {
+          name: 'Aneka Nasi & Bakmi Goreng',
+          menu: [
+            {
+              name: 'Nasi / Mie / Bihun Goreng',
+              price: 22000
+            },
+            {
+              name: 'Nasi / Mie Goreng Isi (Ati Ampela / Bakso / Teri / Sosis / Tuna / Ayam )',
+              price: 22000
+            },
+            {
+              name: 'Nasi / Mie / Bihun Godog',
+              price: 22000
+            },
+            {
+              name: 'Nasi / Mie Goreng Seafood',
+              price: 25000
+            },
+            {
+              name: 'Bakmi Jawa Goreng / Nyemek / Godog',
+              price: 22000
+            },
+            {
+              name: 'Bakmi Goreng / Godog Seafood',
+              price: 25000
+            },
+            {
+              name: 'Magelangan / Mawut / Nasi Gila',
+              price: 22000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Nasi Putih',
+              price: 5000
+            },
+            {
+              name: 'Telur Mata Sapi / Dadar',
+              price: 5000
+            },
+            {
+              name: 'Gorengan',
+              price: 3000
+            }
+          ]
+        },
+        {
+          name: 'Siomay & Batagor Kang Toha',
+          menu: [
+            {
+              name: 'Isi 6',
+              price: 15000
+            },
+            {
+              name: 'Isi 8',
+              price: 20000
+            },
+            {
+              name: 'Batagor Kuah',
+              price: 10000
+            },
+            {
+              name: 'Cilok',
+              price: 10000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Extra 1 Pcs',
+              price: 3000
+            },
+            {
+              name: 'Telur',
+              price: 5000
+            }
+          ]
+        },
+        {
+          name: 'Ketoprak & Gado-Gado',
+          menu: [
+            {
+              name: 'Ketoprak',
+              price: 14000
+            },
+            {
+              name: 'Ketoprak + Telur Dadar / Ceplok',
+              price: 19000
+            },
+            {
+              name: 'Gado-Gado (Polos / Nasi / Lontong)',
+              price: 14000
+            },
+            {
+              name: 'Gado-Gado + Telur (Polos / Nasi / Lontong)',
+              price: 19000
+            }
+          ]
+        },
+        {
+          name: 'Hawker Bun',
+          menu: [
+            {
+              name: 'Chicken Caesar Wrap',
+              price: 25000
+            },
+            {
+              name: 'Crispy Chicken Thousand Wrap',
+              price: 25000
+            },
+            {
+              name: 'Korean Crispy Chicken Wrap',
+              price: 25000
+            },
+            {
+              name: 'Gado-Gado Crispy Chicken Wrap',
+              price: 25000
+            },
+            {
+              name: 'Crispy Chicken Rempah Wrap',
+              price: 25000
+            },
+            {
+              name: 'Ayam Berempah Rice',
+              price: 25000
+            },
+            {
+              name: 'Korean Fried Chicken Rice',
+              price: 25000
+            },
+            {
+              name: 'Crispy Chicken Mayo Rice',
+              price: 25000
+            }
+          ]
+        },
+        {
+          name: 'Nasi Pecel Tulungagung',
+          menu: [
+            {
+              name: 'Nasi Pecel',
+              price: 18000
+            },
+            {
+              name: 'Nasi Rawon',
+              price: 23000
+            },
+            {
+              name: 'Nasi Ayam Lengkuas',
+              price: 20000
+            },
+            {
+              name: 'Bakwan Pecel',
+              price: 13000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Telur Ceplok'
+            },
+            {
+              name: 'Telur Pindang'
+            },
+            {
+              name: 'Telur Asin'
+            },
+            {
+              name: 'Sate Paru'
+            },
+            {
+              name: 'Extra Peyek'
+            },
+            {
+              name: 'Tahu / Tempte Bacem'
+            },
+            {
+              name: 'Tempe Tepung Goreng'
+            }
+          ]
+        },
+        {
+          name: 'Lontong Sayur & Nasi Bakar Mami',
+          menu: [
+            {
+              name: 'Lontong Sayur Biasa',
+              price: 14000
+            },
+            {
+              name: 'Lontong Sayur Telor',
+              price: 17000
+            },
+            {
+              name: 'Lontong Sayur Ayam',
+              price: 20000
+            },
+            {
+              name: 'Lontong Sayur Ayam Telor',
+              price: 22000
+            },
+            {
+              name: 'Nasi Bakar Ayam',
+              price: 16000
+            },
+            {
+              name: 'Nasi Bakar Cumi',
+              price: 16000
+            },
+            {
+              name: 'Nasi Bakar Tongkol',
+              price: 16000
+            },
+            {
+              name: 'Bakwan'
+            },
+            {
+              name: 'Tempe'
+            },
+            {
+              name: 'Tahu Isi'
+            },
+            {
+              name: 'Risol'
+            }
+          ]
+        }
+      ],
+      isLoading: true
+    }
+  },
+  mounted() {
+    this.dataCanteenTemp = this.dataCanteen
+  },
+  methods: {
+    priceFilter() {
+      if (this.filter.maxPrice === '' && this.filter.minPrice === '') {
+        this.dataCanteenTemp = this.dataCanteen
+        return
+      }
+
+      this.dataCanteenTemp = this.dataCanteenTemp
+        .map(lapak => {
+          let item
+          if (
+            this.filter.maxPrice === 0 ||
+            this.filter.maxPrice === null ||
+            this.filter.maxPrice === ''
+          ) {
+            item = lapak.menu.filter(item => {
+              return item.price > this.filter.minPrice
+            })
+          } else {
+            item = lapak.menu.filter(item => {
+              return (
+                item.price > this.filter.minPrice &&
+                item.price < this.filter.maxPrice
+              )
+            })
+          }
+
+          return { name: lapak.name, menu: item, addOn: lapak.addOn }
+        })
+        .filter(data => {
+          return data.menu.length !== 0
+        })
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.h1 {
+  @media #{$large} {
+    font-size: 3em;
+  }
+}
+.blog {
+  &-header {
+    text-align: center;
+    font-weight: 400;
+    position: relative;
+    margin: 0 0 0 0;
+    min-height: 250px;
+
+    color: #fff;
+
+    @media #{$md} {
+      min-height: 250px;
+    }
+
+    @media #{$large} {
+      min-height: 400px;
+      text-align: left;
+      margin: 0 0 0 0;
+    }
+
+    img {
+      position: absolute;
+      z-index: 0;
+
+      width: 100%;
+      object-fit: cover;
+      min-height: 100%;
+      max-height: 250px;
+      left: 0;
+
+      filter: brightness(70%);
+
+      @media #{$large} {
+        max-height: 400px;
+      }
+    }
+
+    .text {
+      position: relative;
+      z-index: 1;
+
+      .h1 {
+        font-family: Italiana, serif;
+        margin: 0.5em 0 0 0;
+      }
+
+      p {
+        margin: 0 0 2em 0;
+      }
+    }
+  }
+}
+
+.pricelist {
+  position: relative;
+
+  .title {
+    margin-bottom: 2em;
+    @media #{$large} {
+      padding-right: 78px;
+    }
+  }
+
+  .content {
+    padding: 3em 0;
+  }
+
+  .image {
+    text-align: right;
+    height: 100%;
+
+    img {
+      border-radius: 4px;
+      width: 100%;
+      max-width: 100px;
+    }
+  }
+}
+
+.filter {
+  .container {
+    div {
+      @media #{$large} {
+        width: fit-content;
+      }
+    }
+  }
+}
+
+.site-main {
+  font-family: Poppins-Light, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.vh-40 {
+  height: 40vh;
+}
+</style>
