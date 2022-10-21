@@ -107,6 +107,126 @@ export default {
         minPrice: ''
       },
       dataCanteen: [
+      {
+          name: 'Masakan Padang',
+          menu: [
+            {
+              name: 'Paket Nasi Rendang',
+              price: 25000
+            },
+            {
+              name: 'Paket Nasi Ayam (Goreng / Gulai / Bakar)',
+              price: 23000
+            },
+            {
+              name: 'Paket Nasi Ikan (Goreng / Bakar)',
+              price: 22000
+            },
+            {
+              name: 'Paket Nasi Telur Dadar',
+              price: 16000
+            },
+          ],
+          addOn: [
+            {
+              name: 'Nasi Putih',
+              price: 5000
+            },
+            {
+              name: 'Rendang',
+              price: 19000
+            },
+            {
+              name: 'Ayam Goreng / Gulai',
+              price: 17000
+            },
+            {
+              name: 'Ikan Goreng / Gulai',
+              price: 17000
+            },
+            {
+              name: 'Telur Dadar',
+              price: 10000
+            },
+            {
+              name: 'Kerupuk Kulit',
+              price: 8000
+            }
+          ]
+        },
+        {
+          name: 'Mie Ayam',
+          menu: [
+            {
+              name: 'Mie Ayam',
+              price: 16000
+            },
+            {
+              name: 'Mie Ayam Extra Ayam',
+              price: 20000
+            },
+            {
+              name: 'Mie Ayam Pangsit Rebus',
+              price: 20000
+            },
+            {
+              name: 'Mie Ayam Extra Ayam',
+              price: 20000
+            },
+            {
+              name: 'Mie Ayam Komplit',
+              price: 22000
+            },
+            {
+              name: 'Mie Ayam Double',
+              price: 22000
+            }
+
+          ]
+        },
+        {
+          name: 'Minahasa',
+          menu: [
+            {
+              name: 'Paket Minahasa A (Nasi + Ikan / Ayam + Sayur + Bakwan Jagung)',
+              price: 28000
+            },
+            {
+              name: 'Paket Minahasa B (Nasi + Ikan / Ayam + Sayur)',
+              price: 25000
+            },
+            {
+              name: 'Paket Minahasa C (Nasi + Telur / Tempe + Sayur)',
+              price: 15000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Nasi Putih',
+              price: 5000
+            },
+            {
+              name: 'Nasi Merah',
+              price: 6000
+            },
+            {
+              name: 'Ayam / Ikan',
+              price: 15000
+            },
+            {
+              name: 'Bakwan Jagung',
+              price: 5000
+            },
+            {
+              name: 'Telur',
+              price: 5000
+            },
+            {
+              name: 'Aneka Sayur',
+              price: 5000
+            }
+          ]
+        },
         {
           name: 'Selera Sigeulis',
           menu: [
@@ -251,6 +371,45 @@ export default {
               name: 'Gado-Gado + Telur (Polos / Nasi / Lontong)',
               price: 19000
             }
+          ],
+          addOn: [
+            {
+              name: 'Nasi',
+              price: 5000
+            },
+            {
+              name: 'Lontong',
+              price: 5000
+            },
+            {
+              name: 'Telur',
+              price: 5000
+            }
+          ]
+        },
+        {
+          name: 'Hey Juice',
+          menu: [
+            {
+              name: 'Jus Regular (Mangga, Jambu, Sirsak, Belimbing, Tomat, Nanas, Strawberry, Apel, Melon, Jeruk, Terong Belanda, Wortel)',
+              price: 14000
+            },
+            {
+              name: 'Jus Premium (Alpukat / Naga)',
+              price: 16000
+            },
+            {
+              name: 'Jus Mix 2 Buah',
+              price: 16000
+            },
+            {
+              name: 'Jus Mix 3 Buah',
+              price: 18000
+            },
+            {
+              name: 'Buah Potong',
+              price: 15000
+            }
           ]
         },
         {
@@ -294,8 +453,16 @@ export default {
           name: 'Nasi Pecel Tulungagung',
           menu: [
             {
-              name: 'Nasi Pecel',
+              name: 'Nasi Pecel Tulungagung (NPT)',
               price: 18000
+            },
+            {
+              name: 'NPT + Telur Ceplok',
+              price: 20000
+            },
+            {
+              name: 'NPT + Telur Pindang',
+              price: 24000
             },
             {
               name: 'Nasi Rawon',
@@ -312,25 +479,226 @@ export default {
           ],
           addOn: [
             {
-              name: 'Telur Ceplok'
-            },
-            {
-              name: 'Telur Pindang'
-            },
-            {
               name: 'Telur Asin'
             },
             {
               name: 'Sate Paru'
             },
             {
-              name: 'Extra Peyek'
+              name: 'Extra Peyek',
+              price: 4000
             },
             {
-              name: 'Tahu / Tempte Bacem'
+              name: 'Tahu / Tempe Bacem',
+              price: 4000
             },
             {
-              name: 'Tempe Tepung Goreng'
+              name: 'Tempe Tepung Goreng',
+              price: 4000
+            }
+          ]
+        },
+        {
+          name: 'Bakso Qiqin',
+          menu: [
+            {
+              name: 'Bakso Urat + 4 Bakso Kecil + Mie',
+              price: 20000
+            },
+            {
+              name: 'Bakso Selimut + 4 Bakso Kecil + Mie',
+              price: 23000
+            },
+            {
+              name: 'Bakso Beranak + 4 Bakso Kecil + Mie',
+              price: 23000
+            },
+            {
+              name: 'Bakso Iga + 4 Bakso Kecil + Mie',
+              price: 23000
+            },
+            {
+              name: 'Bakso Telur + 4 Bakso Kecil + Mie',
+              price: 23000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Ekstra Nasi',
+              price: 5000
+            },
+            {
+              name: 'Ekstra Bakso Gede',
+              price: 12000
+            },
+            {
+              name: 'Extra Bakso Kecil',
+              price: 2000
+            }
+          ]
+        },
+        {
+          name: 'Aneka Soto',
+          menu: [
+            {
+              name: 'Soto Betawi Daging',
+              price: 25000
+            },
+            {
+              name: 'Soto Daging Bening',
+              price: 25000
+            },
+            {
+              name: 'Soto Betawi Ayam',
+              price: 20000
+            },
+            {
+              name: 'Soto Oseng Ayam',
+              price: 23000
+            },
+            {
+              name: 'Soto Oseng Daging',
+              price: 25000
+            },
+            {
+              name: 'Sate Kuah',
+              price: 25000
+            },
+            {
+              name: 'Soto Banjar',
+              price: 25000
+            },
+            {
+              name: 'Soto Ayam Bening',
+              price: 20000
+            },
+            {
+              name: 'Soto Ayam',
+              price: 20000
+            },
+            {
+              name: 'Soto Ayam Nasi Campur',
+              price: 17000
+            },
+            {
+              name: 'Soto Daging Nasi Campur',
+              price: 20000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Nasi Putih',
+              price: 5000
+            },
+            {
+              name: 'Perkedel, Aneka Sate, Usus Crispy',
+              price: 5000
+            },
+            {
+              name: 'Kerupuk',
+              price: 2000
+            },
+            {
+              name: 'Aneka Gorengan/Bacem',
+              price: 3000
+            }
+          ]
+        },
+        {
+          name: 'Marranu Catering',
+          menu: [
+            {
+              name: 'Nasi + Sayur + Ayam / Ikan',
+              price: 22000
+            },
+            {
+              name: 'Nasi + Telur + Sayur',
+              price: 17000
+            },
+            {
+              name: 'Nasi + Fuyunghay',
+              price: 15000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Nasi Putih',
+              price: 5000
+            },
+            {
+              name: 'Nasi Merah',
+              price: 6000
+            },
+            {
+              name: 'Telur',
+              price: 7000
+            },
+            {
+              name: 'Fuyunghay',
+              price: 10000
+            },
+            {
+              name: 'Ayam/Ikan',
+              price: 12000
+            },
+            {
+              name: 'Gorengan',
+              price: 3000
+            }
+          ]
+        },
+        {
+          name: 'Japanese Food',
+          menu: [
+            {
+              name: 'Paket Chicken + Sayuran (Teriyaki / Yakiniku / Katsu / Katsu Kari / Egg Chicken Roll)',
+              price: 22000
+            },
+            {
+              name: 'Paket Fish + Sayuran (Fish Roll / Otak - Otak Asam Manis / Sapo Tahu Bakso Ikan)',
+              price: 12000
+            },
+            {
+              name: 'Paket Sosis Ayam Goreng',
+              price: 22000
+            },
+            {
+              name: 'Paket Ikan Balado',
+              price: 20000
+            },
+            {
+              name: 'Paket Ayam + Sayuran (Kornet Ayam / Ayam Kecap / Ayam Mentega / Telur Dadar Sosis)',
+              price: 18000
+            },
+            {
+              name: 'Fried Chicken + Nasi',
+              price: 25000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Nasi Putih',
+              price: 5000
+            },
+            {
+              name: 'Nasi Merah',
+              price: 6000
+            },
+            {
+              name: 'Telur',
+              price: 7000
+            },
+            {
+              name: 'Fuyunghay',
+              price: 10000
+            },
+            {
+              name: 'Ayam/Ikan',
+              price: 12000
+            },
+            {
+              name: 'Gorengan',
+              price: 3000
             }
           ]
         },
@@ -364,18 +732,313 @@ export default {
             {
               name: 'Nasi Bakar Tongkol',
               price: 16000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Telur Balado',
+              price: 5000
             },
             {
-              name: 'Bakwan'
+              name: 'Opor Ayam',
+              price: 10000
             },
             {
-              name: 'Tempe'
+              name: 'Bakwan',
+              price: 2000
             },
             {
-              name: 'Tahu Isi'
+              name: 'Tempe',
+              price: 2000
             },
             {
-              name: 'Risol'
+              name: 'Tahu Isi',
+              price: 2000
+            },
+            {
+              name: 'Risol',
+              price: 2000
+            }
+          ]
+        },
+        {
+          name: 'Cebowl',
+          menu: [
+            {
+              name: 'Sambal Matah Chicken Ricebowl',
+              price: 25000
+            },
+            {
+              name: 'Sambal Cabe Ijo Chicken Ricebowl',
+              price: 25000
+            },
+            {
+              name: 'Salted Egg Chicken Ricebowl',
+              price: 27000
+            },
+            {
+              name: 'Thai Sauce Chicken Ricebowl',
+              price: 25000
+            }
+          ]
+        },
+        {
+          name: 'Pempek & Tekwan Kusuko',
+          menu: [
+            {
+              name: 'Pempek Kapal Selam',
+              price: 22000
+            },
+            {
+              name: 'Pempek Lenjer',
+              price: 12000
+            },
+            {
+              name: 'Tekwan 8 Pcs',
+              price: 20000
+            },
+            {
+              name: 'Pempek Kecil (Lenjer / Adaan / Kulit)',
+              price: 7000
+            },
+            {
+              name: 'Aneka Kerupuk',
+              price: 10000
+            }
+          ]
+        },
+        {
+          name: 'Katoshi',
+          menu: [
+            {
+              name: 'Miso Ramen',
+              price: 22000
+            },
+            {
+              name: 'Dry Ramen',
+              price: 22000
+            },
+            {
+              name: 'Crispy Chicken XXL',
+              price: 20000
+            },
+            {
+              name: 'Chick Pop + Mie + Kentang',
+              price: 22000
+            },
+            {
+              name: 'Chick Pop + Nasi + Kentang',
+              price: 22000
+            }
+          ]
+        },
+        {
+          name: 'Mamipia Es Krim',
+          menu: [
+            {
+              name: 'Es Krim Cone (Vanilla/Matcha/Charcoal/Seasonal)',
+              price: 8000
+            }
+          ]
+        },
+        {
+          name: 'Nomu Nomu 너무너무 Crepes and Cafe',
+          menu: [
+            {
+              name: 'Chicken Favorite',
+              price: 25000
+            },
+            {
+              name: "Beef N' Cheese",
+              price: 25000
+            },
+            {
+              name: 'Burger Fiesta',
+              price: 23000
+            },
+            {
+              name: "Chicken N' Cheese",
+              price: 23000
+            },
+            {
+              name: 'Chicken Black Papper',
+              price: 22000
+            },            
+            {
+              name: 'Tuna Fries',
+              price: 22000
+            },
+            {
+              name: 'Double Chips',
+              price: 18000
+            },
+            {
+              name: "Cookies N' Cream",
+              price: 21000
+            },
+            {
+              name: 'Brownies',
+              price: 21000
+            },
+            {
+              name: 'Banana Slice',
+              price: 20000
+            },
+            {
+              name: 'Strawberry Dream',
+              price: 20000
+            },
+            {
+              name: 'Silverqueen Cheese',
+              price: 27000
+            },
+            {
+              name: 'Nutella Cheese',
+              price: 33000
+            },
+            {
+              name: 'Banana Choco Cheese',
+              price: 22000
+            },
+            {
+              name: 'Choco Nut Cheese',
+              price: 20000
+            },
+            {
+              name: 'Choco Nut',
+              price: 18000
+            },
+            {
+              name: 'Choco Cheese',
+              price: 18000
+            },
+            {
+              name: 'Blueberry Choco',
+              price: 20000
+            },
+            {
+              name: 'Blueberry Cheese',
+              price: 20000
+            },
+            {
+              name: 'Strawberry Choco',
+              price: 19000
+            },
+            {
+              name: 'Strawberry Cheese',
+              price: 19000
+            },
+            {
+              name: 'Milky Choco',
+              price: 16000
+            },
+            {
+              name: 'Milky Cheese',
+              price: 16000
+            },
+            {
+              name: 'Libro Guava'
+            },
+            {
+              name: 'Nestle Milo'
+            },
+            {
+              name: 'Nestle Milo Float',
+              price: 25000
+            },
+            {
+              name: 'Nestle Cappucino',
+              price: 18000
+            },
+            {
+              name: 'Nestle Cappucino Float',
+              price: 26000
+            },
+            {
+              name: 'Lemon Tea',
+              price: 14000
+            },
+            {
+              name: 'Nu Milk Tea',
+              price: 10000
+            },
+            {
+              name: 'Nu Green Tea',
+              price: 9000
+            },
+            {
+              name: 'Teh Botol Kotak',
+              price: 5000
+            },
+            {
+              name: 'Fruit Tea',
+              price: 5000
+            },
+            {
+              name: 'Mineral Water',
+              price: 4000
+            }
+          ],
+          addOn: [
+            {
+              name: 'Choco',
+              price: 3000
+            },
+            {
+              name: 'Cheese',
+              price: 5000
+            },
+            {
+              name: 'Peanut',
+              price: 4000
+            },
+            {
+              name: 'Milk',
+              price: 3000
+            },
+            {
+              name: 'Banana',
+              price: 4000
+            },
+            {
+              name: 'Oreo',
+              price: 2000
+            },
+            {
+              name: 'Ice Cream',
+              price: 9000
+            },
+            {
+              name: 'Cheese Slice',
+              price: 4000
+            },
+            {
+              name: 'Sausage',
+              price: 6000
+            },
+            {
+              name: 'Smoked Beef',
+              price: 10000
+            },
+            {
+              name: 'BBQ',
+              price: 7000
+            },
+            {
+              name: 'Tuna',
+              price: 7000
+            },
+            {
+              name: 'Silverqueen',
+              price: 14000
+            },
+            {
+              name: 'Nutella',
+              price: 25000
+            },
+            {
+              name: 'Beef Patties',
+              price: 12000
             }
           ]
         }
