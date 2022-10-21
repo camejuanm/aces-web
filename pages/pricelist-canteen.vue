@@ -392,7 +392,7 @@ export default {
         this.dataCanteenTemp = this.dataCanteen
         return
       }
-
+      this.dataCanteenTemp = this.dataCanteen
       this.dataCanteenTemp = this.dataCanteenTemp
         .map(lapak => {
           let item
