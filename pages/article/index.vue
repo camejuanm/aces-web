@@ -13,7 +13,7 @@
         v-if="!$fetchState.pending"
         class="full-width mb-32 container lg-only"
       >
-        <DropdownCategory
+        <Dropdown
           placeholder="Select category"
           class="filter-category"
           :active="category"
@@ -28,7 +28,7 @@
       v-if="!$fetchState.pending && postCategory.length"
       class="full-width mb-16 container pl-16 pr-16 mobile-only"
     >
-      <DropdownCategory
+      <Dropdown
         placeholder="Select category"
         class="filter-category"
         :active="category"
