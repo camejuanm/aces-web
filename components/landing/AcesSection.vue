@@ -149,6 +149,11 @@ p {
   &-image {
     border-radius: 10px 0 0 10px;
     max-width: 6.5em;
+    overflow: hidden;
+    width: 100%;
+    object-fit: cover;
+    max-height: 140px;
+    min-height: 140px;
   }
 
   &-text {
