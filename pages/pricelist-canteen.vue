@@ -108,49 +108,37 @@ export default {
       },
       dataCanteen: [
       {
-          name: 'Masakan Padang',
+          name: 'Benz Corner',
           menu: [
             {
-              name: 'Paket Nasi Rendang',
+              name: 'Hoki Bento (Nasi + 4 Fried Bento)',
               price: 25000
             },
             {
-              name: 'Paket Nasi Ayam (Goreng / Gulai / Bakar)',
-              price: 23000
+              name: 'Hoki Combo (Nasi + 2 Fried Bento + 4 Sushi)',
+              price: 25000
             },
             {
-              name: 'Paket Nasi Ikan (Goreng / Bakar)',
+              name: 'Karage Donburi (Nasi + Chicken Karage + Egg)',
               price: 22000
             },
             {
-              name: 'Paket Nasi Telur Dadar',
-              price: 16000
+              name: 'Sushi (Chicken / Kani Roll / Fish Roll)',
+              price: 25000
             },
+            {
+              name: 'Mentai Rice (Chicken / Kani / Tuna)',
+              price: 25000
+            }
           ],
           addOn: [
             {
-              name: 'Nasi Putih',
+              name: 'Aneka Bento (Shrimp Roll / Egg Chicken Roll / Spicy Chicken / Spring Roll)',
               price: 5000
             },
             {
-              name: 'Rendang',
-              price: 19000
-            },
-            {
-              name: 'Ayam Goreng / Gulai',
-              price: 17000
-            },
-            {
-              name: 'Ikan Goreng / Gulai',
-              price: 17000
-            },
-            {
-              name: 'Telur Dadar',
-              price: 10000
-            },
-            {
-              name: 'Kerupuk Kulit',
-              price: 8000
+              name: 'Ayam Karage',
+              price: 15000
             }
           ]
         },
@@ -937,10 +925,12 @@ export default {
               price: 16000
             },
             {
-              name: 'Libro Guava'
+              name: 'Libro Guava',
+              price: 9000
             },
             {
-              name: 'Nestle Milo'
+              name: 'Nestle Milo',
+              price: 17000
             },
             {
               name: 'Nestle Milo Float',
